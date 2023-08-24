@@ -1,0 +1,352 @@
+<script lang="ts">
+  import "./lib/css/page.css"
+  import "./lib/css/tailwind.css"
+  import gsap from "gsap";
+  import emailjs from 'emailjs-com';
+
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import White_logo from "./lib/img/khalil logo white (2).png"
+  import Chababouna_img from "./lib/img/Chababouna-Mockup.png"
+  import DMC_img from "./lib/img/DMC-Mockup.png"
+
+  import chababouna from "./lib/img/IMG_20220701_112957-removebg-preview.png"
+  import DMC from "./lib/img/DMC_Profile.png"
+
+  import Fa from 'svelte-fa'
+  import { faFlag } from '@fortawesome/free-solid-svg-icons'
+
+  import Typescript from "./lib/img/typescript.png"
+  import AdobeXD from "./lib/img/adobe-xd-icon.png"
+  import Javascript from "./lib/img/js.png"
+  import Laravel from "./lib/img/laravel.995x1024.png"
+  import React from "./lib/img/react.1024x911.png"
+  import SQL from "./lib/img/sql-database-generic.760x1024.png"
+  import Svelte from "./lib/img/svelte-icon.852x1024.png"
+  import Tailwind from "./lib/img/tailwind.png"
+  import Bootstrap from "./lib/img/bootstrap-5-logo-icon.png"
+
+  let logos = [
+    { src: Typescript, alt: 'typescript' },
+    { src: Javascript, alt: 'javascript' },
+    { src: Svelte, alt: 'svelte/sveltekit' },
+    { src: Laravel, alt: 'laravel' },
+    { src: React, alt: 'react' },
+    { src: SQL, alt: 'sql' },
+    { src: Tailwind, alt: 'tailwind' },
+    { src: Bootstrap, alt: 'bootstrap' },
+    { src: AdobeXD, alt: 'adobe xd' },
+  ];
+  
+  import Navbar from "./lib/components/Navbar.svelte";
+
+  
+
+  window.addEventListener("load", () => {
+  const circleContainer = document.getElementById("circle-container");
+  const circle = document.getElementById("circle");
+
+  circleContainer.style.left = "-9999px";
+  circleContainer.style.top = "-9999px";
+
+  window.onpointermove = (event: PointerEvent) => { 
+    const x = event.clientX + window.scrollX;
+    const y = event.clientY + window.scrollY;
+
+
+    circleContainer.style.left = `${x}px`;
+    circleContainer.style.top = `${y}px`;
+    circle.style.display = "block";
+
+    circle.animate(
+      {
+          left: `${x}px`,
+          top: `${y}px`
+        },
+      { duration: 1000, fill: "forwards" }
+    );
+  };
+});
+
+
+import { onMount } from 'svelte';
+
+let left;
+
+onMount(() => {
+  left = document.getElementById("left-side");
+
+  const handleOnMove = event => {
+    const p = event.clientX / window.innerWidth * 100;
+    left.style.width = `${p}%`;
+  }
+
+  document.onmousemove = event => handleOnMove(event);
+  document.ontouchmove = event => handleOnMove(event.touches[0]);
+
+  const subtitle = document.getElementsByClassName("card-subtitle")[0];
+
+const createWord = (text, index) => {
+  const word = document.createElement("span");
+  
+  word.innerHTML = `${text} `;
+  
+  word.classList.add("card-subtitle-word");
+  
+  word.style.transitionDelay = `${index * 40}ms`;
+  
+  return word;
+}
+
+const addWord = (text, index) => subtitle.appendChild(createWord(text, index));
+
+const createSubtitle = text => text.split(" ").map(addWord);
+
+createSubtitle("It's fine if you don't, just don't regret it lol.");
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(".square", {
+  x: "0%",
+  duration: 3,
+  opacity: 1,
+  scrollTrigger: {
+    trigger: '.square',
+    start: 'top 80%',
+    end: 'top 30%',
+    scrub: true
+  }
+});
+
+gsap.to(".square2", {
+  x: "0%",
+  duration: 3,
+  opacity: 1,
+  scrollTrigger: {
+    trigger: '.square2',
+    start: 'top 80%',
+    end: 'top 30%',
+    scrub: true
+  }
+});
+
+gsap.from(".square", {
+  x: "-100%",
+  opacity: 0,
+  duration: 3,
+  scrollTrigger: {
+    trigger: '.square',
+    start: 'top 100%',
+    end: 'top 50%',
+  }
+});
+
+gsap.from(".square2", {
+  x: "100%",
+  opacity: 0,
+  duration: 3,
+  scrollTrigger: {
+    trigger: '.square2',
+    start: 'top 100%',
+    end: 'top 50%',
+  }
+});
+
+
+gsap.from(".bio", {
+  y: "100%",
+  opacity: 0,
+  duration: 1,
+  scrollTrigger: {
+    trigger: '.about',
+    start: 'top 30%',
+    end: 'top 10%',
+    once: true
+  }
+});
+
+});
+
+
+const sendMail = (event : Event) => {
+  event.preventDefault();
+  (function(){
+    emailjs.init("AzQOgTKs0UezsKHtb");
+  })();
+
+  var params = {
+    sendername: (document.querySelector("#sendername") as HTMLInputElement).value,
+    subject: (document.querySelector("#subject") as HTMLInputElement).value,
+    message: (document.querySelector("#message") as HTMLInputElement).value,
+    replyto: ""
+  };
+  var serviceID = "service_xo4l9xq";
+  var templateID = "template_437s6mz";
+
+  emailjs.send(serviceID, templateID, params).
+  then(res=>{
+    alert("Email sent successfully!")
+  }).catch(err=>{
+    alert("Something wrong happened!")
+  });
+}
+ 
+</script>
+
+
+<Navbar/>
+
+<div id="circle-container">
+  <div id="circle"></div>
+</div>
+  
+<div class="header" id="home">
+  <div id="left-side" class="side">
+    <h2 class="title">
+      "The intelligent use of science and technology are the tools with which to achieve a new direction."
+      <span class="fancy">-Jacque Fresco</span>      
+    </h2>
+  </div>
+  <div id="right-side" class="side">
+    <h2 class="title">
+      "Science and technology can solve all the world's problems, and historically it has been shown to make the world better and better."  
+      <span class="fancy">-Zoltan Istvan</span>     
+    </h2>
+    <div class="solar_system">
+      <div class="sun"></div>
+      <div class="first_planet-outline">
+        <div class="first_planet"></div>
+      </div>
+  
+      <div class="second_planet-outline">
+        <div class="second_planet"></div>
+      </div>
+  
+      <div class="third_planet-outline">
+        <div class="third_planet"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="body min-h-screen bg-center bg-gray-100 dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+  <section class="about" id="about">
+    <h1 class="title">Who am I?</h1>
+    <p class="bio">
+      I'm Bourouba Mohamed El Khalil, a dynamic force in the fields of <span class="dev">front-end</span> and <span class="dev">back-end development</span>, infused with a strong sense of captivating <span class="design">UI/UX design</span>. I'm very interested in exciting areas of conceptual design and innovation, and I'm always trying to navigate the ever-changing landscape of Computer Science (CS) and design. Let's start this exciting odyssey together and create a way to do truly <span class="sparkle">awesome</span> and <span class="sparkle">amazing things</span>!
+    </p>
+  </section>
+
+  <section class="skills" id="skills">
+    <div class="lang_logos m-12">
+      <h1 class="title">My skills</h1>
+      <div class="my_skills grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 md:gap-6 lg:gap-8">
+        {#each logos as logo}
+          <div class="blocks p-2 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex justify-items-center transition duration-300 hover:bg-gray-800">
+            <img src={logo.src} alt={logo.alt}/>
+            <div class="hidden group-hover:block absolute top-full left-1/2 transform -translate-x-1/2 p-2 bg-gray-800 text-white text-sm rounded-md shadow-md">
+              {logo.alt}
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <section class="works" id="works">
+    <h1 class="title">My works</h1>
+    <button class="square">
+      <img src={Chababouna_img} alt="chababouna_img" class="project_img">
+      <div class="centered-paragraph">
+        <div class="logo-container">
+          <img src={chababouna} alt="chababouna_logo" class="web_logo">
+        </div>
+        It's Chababouna Association's official website, a cultural and scientific association in Setif, Algeria.
+        <a href="https://chababouna.dz" target="_blank" class="img_link underline">Check the website!</a>
+      </div>
+    </button>
+    <button class="square2">
+      <img src={DMC_img} alt="dmc_img" class="project_img">
+      <div class="centered-paragraph">
+        <div class="logo-container">
+          <img src={DMC} alt="DMC_logo" class="web_logo">
+        </div>
+        It's the official website of Digital Med Care (DMC), where you can schedule home appointments and find rare medications.
+        <a href="https://digitalmedcare.com/Home" target="_blank" class="img_link underline">Check the website!</a>
+      </div>
+    </button>
+  </section>
+
+
+  <section class="contact mb-20" id="contact">
+    <h1 class="title">
+      Let's get in touch!
+    </h1>
+    <div class="email_container flex justify-center align-center text-center">
+      <div class="card">
+        <div class="card-content">
+          <h3 class="card-title">Email me!</h3>
+          <h4 class="card-subtitle"> </h4>
+          <form action="#" class="email_form space-y-8">
+            <div>
+              <br>
+              <input type="email" id="sendername" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="your_email@gmail.com" required>
+            </div>
+            <div class="sm:col-span-2">
+              <input type="text" id="subject" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="subject" required>
+                <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="tell me what you want here..."></textarea>
+            </div>
+            <button on:click={sendMail} class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+              Send
+            </button>          
+        </form>
+        </div>
+        <i class="card-icon">
+          <img src={White_logo} alt="Logo">
+        </i>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="web_links flex justify-center">
+      <ul class="m-10">
+        <li>
+            <a href="#home">Home</a>
+        </li>
+        <li>
+            <a href="#about">About</a>
+        </li>
+        <li>
+            <a href="#skills">Skills</a>
+        </li>
+        <li>
+            <a href="#works">Works</a>
+        </li>
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+    </ul>
+    </div>
+    <div class="social_media_links flex justify-center space-x-10 m-10">
+      <a target="_blank" href="https://github.com/MohaSetif" class="flex items-center space-x-3 hover:text-sky-400 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5" viewBox="0 0 16 16">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+      </a>
+      <a target="_blank" href="https://www.facebook.com/bourouba.medelkhalil/" class="flex items-center space-x-3 hover:text-sky-400 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5" viewBox="0 0 16 16">
+          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+        </svg>
+      </a>
+      <a target="_blank" href="https://www.instagram.com/bourouba_khalil/" class="flex items-center space-x-3 hover:text-sky-400 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5" viewBox="0 0 16 16">
+          <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
