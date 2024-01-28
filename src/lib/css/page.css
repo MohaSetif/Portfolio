@@ -30,7 +30,7 @@
 }
 
 body {  
-  background-color: var(--dark);
+  background-color: linear-gradient(90deg, rgb(6, 5, 22) 0%, rgb(19, 16, 48) 75%);;
   margin: 0px;
   font-family: Ubuntu-Regular;
 }
@@ -278,6 +278,8 @@ body {
     font-weight: bolder;
   }
 
+/*=================================*/
+
 .works {
   position: relative;
   height: 80vmin;
@@ -285,7 +287,34 @@ body {
   margin-bottom: 80px;
 }
 
-.square, .square2 {
+.images_container{
+  display: flex;
+  overflow-x: scroll;
+  gap: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.images_container::-webkit-scrollbar {
+  display: none;
+}
+
+.images_container img{
+  border-radius: 15px;
+  border: 1.5px solid white;
+  z-index: 5;
+}
+
+.image_titles span{
+  position: absolute;
+  z-index: 6;
+}
+
+.images_container img:nth-child(1){
+  margin-left: 20%;
+}
+
+/* .square, .square2 {
   width: 40%;
   display: inline-block;
   position: relative;
@@ -344,7 +373,7 @@ body {
 .square:hover:before, .square2:hover:before {
   transform: scaleX(1);
   transform-origin: bottom left;
-}
+} */
 
 /*=================================*/
 

@@ -6,11 +6,11 @@
 
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import White_logo from "./lib/img/khalil logo white (2).png"
-  import Chababouna_img from "./lib/img/Chababouna-Mockup.png"
-  import DMC_img from "./lib/img/DMC-Mockup.png"
 
-  import chababouna from "./lib/img/IMG_20220701_112957-removebg-preview.png"
-  import DMC from "./lib/img/DMC_Profile.png"
+  import Ddos from "./lib/img/DDOS.png"
+  import emotet from "./lib/img/emotet.png"
+  import chababouna from "./lib/img/Chababouna.png"
+  import dmc from "./lib/img/DMC.png"
 
   import Fa from 'svelte-fa'
   import { faFlag } from '@fortawesome/free-solid-svg-icons'
@@ -39,7 +39,12 @@
   
   import Navbar from "./lib/components/Navbar.svelte";
 
-  
+  let web_images= [ 
+    {src: chababouna, name: 'Chababouna'}, 
+    {src: dmc, name: 'Digital Med Care'}, 
+    {src: emotet, name: 'Emotet'}, 
+    {src: Ddos, name: 'Distributed Denial of Service'}
+  ]
 
   window.addEventListener("load", () => {
   const circleContainer = document.getElementById("circle-container");
@@ -101,7 +106,7 @@ const addWord = (text, index) => subtitle.appendChild(createWord(text, index));
 
 const createSubtitle = text => text.split(" ").map(addWord);
 
-createSubtitle("It's fine if you don't, just don't regret it lol.");
+createSubtitle("to build your next project!");
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -256,7 +261,13 @@ const sendMail = (event : Event) => {
 
   <section class="works" id="works">
     <h1 class="title">My works</h1>
-    <button class="square">
+    <div class="images_container">
+      {#each web_images as image}
+        <img src={image.src} alt={image.name} width="768px" height="432px">
+        <!-- <span>{image.name}</span> -->
+      {/each}
+    </div>
+    <!-- <button class="square">
       <img src={Chababouna_img} alt="chababouna_img" class="project_img">
       <div class="centered-paragraph">
         <div class="logo-container">
@@ -275,7 +286,7 @@ const sendMail = (event : Event) => {
         It's the official website of Digital Med Care (DMC), where you can schedule home appointments and find rare medications.
         <a href="https://digitalmedcare.com/Home" target="_blank" class="img_link underline">Check the website!</a>
       </div>
-    </button>
+    </button> -->
   </section>
 
 
