@@ -1,202 +1,222 @@
 <script lang="ts">
-  import "./lib/css/page.css"
-  import "./lib/css/tailwind.css"
+  import "./lib/css/page.css";
+  import "./lib/css/tailwind.css";
   import gsap from "gsap";
   import emailjs from 'emailjs-com';
-
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import White_logo from "./lib/img/khalil logo white (2).png"
+  import White_logo from "./lib/img/khalil logo white (2).png";
 
-  import Ddos from "./lib/img/DDOS.png"
-  import emotet from "./lib/img/emotet.png"
-  import chababouna from "./lib/img/Chababouna.png"
-  import dmc from "./lib/img/DMC.png"
+  import Ddos from "./lib/img/DDOS.png";
+  import emotet from "./lib/img/emotet.png";
+  import chababouna from "./lib/img/Chababouna.png";
+  import dmc from "./lib/img/DMC.png";
 
-  import Fa from 'svelte-fa'
-  import { faFlag } from '@fortawesome/free-solid-svg-icons'
+  import Fa from 'svelte-fa';
+  import { faFlag } from '@fortawesome/free-solid-svg-icons';
 
-  import Typescript from "./lib/img/typescript.png"
-  import AdobeXD from "./lib/img/adobe-xd-icon.png"
-  import Javascript from "./lib/img/js.png"
-  import Laravel from "./lib/img/laravel.995x1024.png"
-  import React from "./lib/img/react.1024x911.png"
-  import SQL from "./lib/img/sql-database-generic.760x1024.png"
-  import Svelte from "./lib/img/svelte-icon.852x1024.png"
-  import Tailwind from "./lib/img/tailwind.png"
-  import Bootstrap from "./lib/img/bootstrap-5-logo-icon.png"
+  import Typescript from "./lib/img/typescript.png";
+  import Javascript from "./lib/img/js.png";
+  import Laravel from "./lib/img/laravel.995x1024.png";
+  import React from "./lib/img/react.1024x911.png";
+  import MySQL from "./lib/img/mysql.png";
+  import Svelte from "./lib/img/svelte-icon.852x1024.png";
+  import Tailwind from "./lib/img/tailwind.png";
+  import Bootstrap from "./lib/img/bootstrap-5-logo-icon.png";
+  import Java from "./lib/img/java-logo-2.png"
+  import pgsql from "./lib/img/postgresql.png"
+  import scene_builder from "./lib/img/scene_builder.png"
+  import Docker from "./lib/img/docker-mark-blue.png"
 
-  let logos = [
-    { src: Typescript, alt: 'typescript' },
-    { src: Javascript, alt: 'javascript' },
-    { src: Svelte, alt: 'svelte/sveltekit' },
-    { src: Laravel, alt: 'laravel' },
-    { src: React, alt: 'react' },
-    { src: SQL, alt: 'sql' },
-    { src: Tailwind, alt: 'tailwind' },
-    { src: Bootstrap, alt: 'bootstrap' },
-    { src: AdobeXD, alt: 'adobe xd' },
+  import outline_Typescript from "./lib/img/typescript - outline.png";
+  import outline_Javascript from "./lib/img/javascript - outline.png";
+  import outline_Laravel from "./lib/img/laravel - outline.png";
+  import outline_React from "./lib/img/react - outline.png";
+  import outline_MySQL from "./lib/img/mySQL - outline.png";
+  import outline_Svelte from "./lib/img/svelte - outline.png";
+  import outline_Tailwind from "./lib/img/tailwind - outline.png";
+  import outline_Bootstrap from "./lib/img/bootstrap - outline.png";
+  import outline_Java from "./lib/img/java - outline.png"
+  import outline_pgsql from "./lib/img/postgresql - outline.png"
+  import outline_scene_builder from "./lib/img/sceneBuilder - outline.png"
+  import outline_Docker from "./lib/img/docker - outline.png"
+
+  interface Logo {
+    src: string;
+    outlineSrc: string;
+    alt: string;
+  }
+
+  let logos: Logo[] = [
+    { src: Typescript, outlineSrc: outline_Typescript, alt: 'TypeScript' },
+    { src: Javascript, outlineSrc: outline_Javascript, alt: 'JavaScript' },
+    { src: Laravel, outlineSrc: outline_Laravel, alt: 'Laravel' },
+    { src: React, outlineSrc: outline_React, alt: 'React' },
+    { src: MySQL, outlineSrc: outline_MySQL, alt: 'MySQL' },
+    { src: Svelte, outlineSrc: outline_Svelte, alt: 'Svelte' },
+    { src: Tailwind, outlineSrc: outline_Tailwind, alt: 'Tailwind' },
+    { src: Bootstrap, outlineSrc: outline_Bootstrap, alt: 'Bootstrap' },
+    { src: Java, outlineSrc: outline_Java, alt: 'Java' },
+    { src: pgsql, outlineSrc: outline_pgsql, alt: 'PostgreSQL' },
+    { src: scene_builder, outlineSrc: outline_scene_builder, alt: 'Scene Builder' },
+    { src: Docker, outlineSrc: outline_Docker, alt: 'Docker' },
   ];
-  
+
   import Navbar from "./lib/components/Navbar.svelte";
 
-  let web_images= [ 
-    {src: chababouna, name: 'Chababouna'}, 
-    {src: dmc, name: 'Digital Med Care'}, 
-    {src: emotet, name: 'Emotet'}, 
-    {src: Ddos, name: 'Distributed Denial of Service'}
-  ]
+  interface WebImage {
+    src: string;
+    name: string;
+  }
+
+  let web_images: WebImage[] = [
+    { src: chababouna, name: 'Chababouna' },
+    { src: dmc, name: 'Digital Med Care' },
+    { src: emotet, name: 'Emotet' },
+    { src: Ddos, name: 'Distributed Denial of Service' }
+  ];
 
   window.addEventListener("load", () => {
-  const circleContainer = document.getElementById("circle-container");
-  const circle = document.getElementById("circle");
+    const circleContainer = document.getElementById("circle-container") as HTMLElement;
+    const circle = document.getElementById("circle") as HTMLElement;
 
-  circleContainer.style.left = "-9999px";
-  circleContainer.style.top = "-9999px";
+    circleContainer.style.left = "-9999px";
+    circleContainer.style.top = "-9999px";
 
-  window.onpointermove = (event: PointerEvent) => { 
-    const x = event.clientX + window.scrollX;
-    const y = event.clientY + window.scrollY;
+    window.onpointermove = (event: PointerEvent) => {
+      const x = event.clientX + window.scrollX;
+      const y = event.clientY + window.scrollY;
 
+      circleContainer.style.left = `${x}px`;
+      circleContainer.style.top = `${y}px`;
+      circle.style.display = "block";
 
-    circleContainer.style.left = `${x}px`;
-    circleContainer.style.top = `${y}px`;
-    circle.style.display = "block";
-
-    circle.animate(
-      {
+      circle.animate(
+        {
           left: `${x}px`,
           top: `${y}px`
         },
-      { duration: 1000, fill: "forwards" }
-    );
-  };
-});
-
-
-import { onMount } from 'svelte';
-
-let left;
-
-onMount(() => {
-  left = document.getElementById("left-side");
-
-  const handleOnMove = event => {
-    const p = event.clientX / window.innerWidth * 100;
-    left.style.width = `${p}%`;
-  }
-
-  document.onmousemove = event => handleOnMove(event);
-  document.ontouchmove = event => handleOnMove(event.touches[0]);
-
-  const subtitle = document.getElementsByClassName("card-subtitle")[0];
-
-const createWord = (text, index) => {
-  const word = document.createElement("span");
-  
-  word.innerHTML = `${text} `;
-  
-  word.classList.add("card-subtitle-word");
-  
-  word.style.transitionDelay = `${index * 40}ms`;
-  
-  return word;
-}
-
-const addWord = (text, index) => subtitle.appendChild(createWord(text, index));
-
-const createSubtitle = text => text.split(" ").map(addWord);
-
-createSubtitle("to build your next project!");
-
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.to(".square", {
-  x: "0%",
-  duration: 3,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: '.square',
-    start: 'top 80%',
-    end: 'top 30%',
-    scrub: true
-  }
-});
-
-gsap.to(".square2", {
-  x: "0%",
-  duration: 3,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: '.square2',
-    start: 'top 80%',
-    end: 'top 30%',
-    scrub: true
-  }
-});
-
-gsap.from(".square", {
-  x: "-100%",
-  opacity: 0,
-  duration: 3,
-  scrollTrigger: {
-    trigger: '.square',
-    start: 'top 100%',
-    end: 'top 50%',
-  }
-});
-
-gsap.from(".square2", {
-  x: "100%",
-  opacity: 0,
-  duration: 3,
-  scrollTrigger: {
-    trigger: '.square2',
-    start: 'top 100%',
-    end: 'top 50%',
-  }
-});
-
-
-gsap.from(".bio", {
-  y: "100%",
-  opacity: 0,
-  duration: 1,
-  scrollTrigger: {
-    trigger: '.about',
-    start: 'top 30%',
-    end: 'top 10%',
-    once: true
-  }
-});
-
-});
-
-
-const sendMail = (event : Event) => {
-  event.preventDefault();
-  (function(){
-    emailjs.init("AzQOgTKs0UezsKHtb");
-  })();
-
-  var params = {
-    sendername: (document.querySelector("#sendername") as HTMLInputElement).value,
-    subject: (document.querySelector("#subject") as HTMLInputElement).value,
-    message: (document.querySelector("#message") as HTMLInputElement).value,
-    replyto: ""
-  };
-  var serviceID = "service_xo4l9xq";
-  var templateID = "template_437s6mz";
-
-  emailjs.send(serviceID, templateID, params).
-  then(res=>{
-    alert("Email sent successfully!")
-  }).catch(err=>{
-    alert("Something wrong happened!")
+        { duration: 1000, fill: "forwards" }
+      );
+    };
   });
-}
- 
+
+  import { onMount } from 'svelte';
+
+  let left: HTMLElement | null;
+
+  onMount(() => {
+    left = document.getElementById("left-side") as HTMLElement;
+
+    const handleOnMove = (event: MouseEvent | TouchEvent) => {
+      const clientX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+      const p = (clientX / window.innerWidth) * 100;
+      if (left) {
+        left.style.width = `${p}%`;
+      }
+    };
+
+    document.onmousemove = handleOnMove;
+    document.ontouchmove = handleOnMove;
+
+    const subtitle = document.getElementsByClassName("card-subtitle")[0] as HTMLElement;
+
+    const createWord = (text: string, index: number): HTMLElement => {
+      const word = document.createElement("span");
+      word.innerHTML = `${text} `;
+      word.classList.add("card-subtitle-word");
+      word.style.transitionDelay = `${index * 40}ms`;
+      return word;
+    };
+
+    const addWord = (text: string, index: number) => subtitle.appendChild(createWord(text, index));
+
+    const createSubtitle = (text: string) => text.split(" ").map(addWord);
+
+    createSubtitle("to build your next project!");
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".square", {
+      x: "0%",
+      duration: 3,
+      opacity: 1,
+      scrollTrigger: {
+        trigger: '.square',
+        start: 'top 80%',
+        end: 'top 30%',
+        scrub: true
+      }
+    });
+
+    gsap.to(".square2", {
+      x: "0%",
+      duration: 3,
+      opacity: 1,
+      scrollTrigger: {
+        trigger: '.square2',
+        start: 'top 80%',
+        end: 'top 30%',
+        scrub: true
+      }
+    });
+
+    gsap.from(".square", {
+      x: "-100%",
+      opacity: 0,
+      duration: 3,
+      scrollTrigger: {
+        trigger: '.square',
+        start: 'top 100%',
+        end: 'top 50%',
+      }
+    });
+
+    gsap.from(".square2", {
+      x: "100%",
+      opacity: 0,
+      duration: 3,
+      scrollTrigger: {
+        trigger: '.square2',
+        start: 'top 100%',
+        end: 'top 50%',
+      }
+    });
+
+    gsap.from(".bio", {
+      y: "100%",
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: '.about',
+        start: 'top 30%',
+        end: 'top 10%',
+        once: true
+      }
+    });
+  });
+
+  const sendMail = (event: Event) => {
+    event.preventDefault();
+    emailjs.init("AzQOgTKs0UezsKHtb");
+
+    const params = {
+      sendername: (document.querySelector("#sendername") as HTMLInputElement).value,
+      subject: (document.querySelector("#subject") as HTMLInputElement).value,
+      message: (document.querySelector("#message") as HTMLInputElement).value,
+      replyto: ""
+    };
+
+    const serviceID = "service_xo4l9xq";
+    const templateID = "template_437s6mz";
+
+    emailjs.send(serviceID, templateID, params)
+      .then(res => {
+        alert("Email sent successfully!");
+      })
+      .catch(err => {
+        alert("Something wrong happened!");
+      });
+  };
 </script>
 
 
@@ -246,16 +266,17 @@ const sendMail = (event : Event) => {
   <section class="skills" id="skills">
     <div class="lang_logos m-12">
       <h1 class="title">My skills</h1>
-      <div class="my_skills grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 md:gap-6 lg:gap-8">
+      <div class="my_skills grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 border border-white/30 justify-center items-center">
         {#each logos as logo}
-          <div class="blocks p-2 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex justify-items-center transition duration-300 hover:bg-gray-800">
-            <img src={logo.src} alt={logo.alt}/>
-            <div class="hidden group-hover:block absolute top-full left-1/2 transform -translate-x-1/2 p-2 bg-gray-800 text-white text-sm rounded-md shadow-md">
+          <div class="p-4 sm:p-6 md:p-8 lg:p-12 h-36 sm:h-40 md:h-44 lg:h-48 border border-white/30 flex justify-center items-center logo-container group relative">
+            <img src={logo.outlineSrc} height="40" width="40" class="sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-80 lg:w-80 rounded-lg outline_img transition-all duration-300" alt={logo.alt} />
+            <img src={logo.src} height="40" width="40" class="sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-80 lg:w-80 rounded-lg normal absolute transition-all duration-300 opacity-0" alt={logo.alt} />
+            <div class="label absolute mt-[4rem] sm:mt-[5rem] md:mt-[6rem] lg:mt-[7rem] p-2 bg-gray-800 text-white text-xs sm:text-sm rounded-md shadow-md opacity-0 transition-all duration-300">
               {logo.alt}
             </div>
           </div>
         {/each}
-      </div>
+      </div>        
     </div>
   </section>
 

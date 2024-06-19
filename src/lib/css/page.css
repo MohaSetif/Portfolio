@@ -587,3 +587,50 @@ footer{
     display: block;
   }
 }
+
+/* =========================================== */
+.logo-container {
+  position: relative;
+}
+
+.logo-container img {
+  position: absolute;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.logo-container img.normal {
+  height: 70px;
+  width: 70px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.logo-container img.outline_img {
+  height: 70px;
+  width: 70px;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.logo-container:hover img.normal {
+  opacity: 1;
+  height: 80px;
+  width: 80px;
+  transform: translateY(-20px); /* Moves the image up on hover */
+}
+
+.logo-container:hover img.outline_img {
+  opacity: 0;
+  height: 80px;
+  width: 80px;
+  transform: translateY(-20px);
+}
+
+.label {
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo-container:hover .label {
+  opacity: 1;
+}
