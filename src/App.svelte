@@ -40,6 +40,8 @@
   import outline_scene_builder from "./lib/img/sceneBuilder - outline.png"
   import outline_Docker from "./lib/img/docker - outline.png"
 
+  import anime from 'animejs';
+
   interface Logo {
     src: string;
     outlineSrc: string;
@@ -52,7 +54,7 @@
     { src: Laravel, outlineSrc: outline_Laravel, alt: 'Laravel' },
     { src: React, outlineSrc: outline_React, alt: 'React' },
     { src: MySQL, outlineSrc: outline_MySQL, alt: 'MySQL' },
-    { src: Svelte, outlineSrc: outline_Svelte, alt: 'Svelte' },
+    { src: Svelte, outlineSrc: outline_Svelte, alt: 'Svelte/SvelteKit' },
     { src: Tailwind, outlineSrc: outline_Tailwind, alt: 'Tailwind' },
     { src: Bootstrap, outlineSrc: outline_Bootstrap, alt: 'Bootstrap' },
     { src: Java, outlineSrc: outline_Java, alt: 'Java' },
@@ -100,7 +102,7 @@
     };
   });
 
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
 
   let left: HTMLElement | null;
 
@@ -217,6 +219,7 @@
         alert("Something wrong happened!");
       });
   };
+
 </script>
 
 
@@ -276,7 +279,7 @@
             </div>
           </div>
         {/each}
-      </div>        
+      </div>
     </div>
   </section>
 

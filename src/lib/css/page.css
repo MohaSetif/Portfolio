@@ -589,8 +589,11 @@ footer{
 }
 
 /* =========================================== */
+
 .logo-container {
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
 }
 
 .logo-container img {
@@ -616,7 +619,7 @@ footer{
   opacity: 1;
   height: 80px;
   width: 80px;
-  transform: translateY(-20px); /* Moves the image up on hover */
+  transform: translateY(-20px);
 }
 
 .logo-container:hover img.outline_img {
