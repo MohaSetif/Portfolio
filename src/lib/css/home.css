@@ -1,0 +1,192 @@
+
+body {
+    color: white;
+    padding: 0;
+    margin: 0rem;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar{
+    width: 0.4em;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    border-radius: 50px;
+    background-color: #3dbddc;
+  }
+
+  ::-webkit-scrollbar-track{
+    background: rgba(14,24,39,255);
+  }
+  
+  #circle {
+    height: 3vmax;
+    aspect-ratio: 1;
+    z-index: 9999;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid white;
+    pointer-events: none;
+  }  
+
+  .header, .body {
+    position: relative;
+    text-align: center;
+    padding: 0.02px;
+  }
+
+  
+  .body {
+    margin-top: 100vh;
+    padding: 20px;
+  }
+
+  .quote{
+    text-align: center;
+    justify-content: center;
+    font-weight: bolder;
+    padding: 150px;
+    font-size: 50px;
+  }
+
+  .by{
+    color: #3dbddc;
+  }
+
+  .solar_system {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .sun{
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background-color: rgb(52, 86, 131);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+
+  .first_planet{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-color: rgb(52, 86, 131);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    animation: orbit 14s linear infinite;
+  }
+
+  .second_planet{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-color: rgb(52, 86, 131);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    animation: orbit2 8s linear infinite;
+  }
+
+  .third_planet{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-color: rgb(52, 86, 131);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    animation: orbit3 2s linear infinite;
+  }
+
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg) translateX(270px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(270px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit2 {
+    from {
+      transform: rotate(0deg) translateX(150px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(150px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit3 {
+    from {
+      transform: rotate(0deg) translateX(70px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(70px) rotate(-360deg);
+    }
+  }
+
+  .first_planet-outline, .second_planet-outline, .third_planet-outline{
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgb(52, 86, 131);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+
+  .first_planet-outline{
+    height: 140px;
+    width: 140px;
+  }
+
+  .second_planet-outline{
+    height: 300px;
+    width: 300px;
+  }
+
+  .third_planet-outline{
+    height: 540px;
+    width: 540px;
+  }
+
+  .about{
+    padding: 50px;
+  }
+
+  .bio{
+    width: 90%;
+    position: relative;
+    left: 50%;
+    translate: -50%;
+    font-size: 5vmin;
+  }
+
+  .sparkle{
+    color: rgb(109, 77, 199);
+    font-family: Permanent-Marker, cursive;
+  }
+
+  .dev{
+    font-family: Proggy-Clean;
+    text-transform: uppercase;
+  }
+
+  .title{
+    margin-bottom: 50px;
+    font-size: 10vmin;
+    font-weight: bolder;
+  }
