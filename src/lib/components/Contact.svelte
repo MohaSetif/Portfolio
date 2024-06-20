@@ -6,7 +6,7 @@
 
     const sendMail = (event: Event) => {
         event.preventDefault();
-        emailjs.init("AzQOgTKs0UezsKHtb");
+        emailjs.init("nwgs7MHKu2gcb9_nS");
 
         const params = {
         sendername: (document.querySelector("#sendername") as HTMLInputElement).value,
