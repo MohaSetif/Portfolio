@@ -1,5 +1,4 @@
 <script lang="ts">
-
   import Typescript from "../img/typescript.png";
   import Javascript from "../img/js.png";
   import Laravel from "../img/laravel.995x1024.png";

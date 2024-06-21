@@ -8,6 +8,7 @@
   import Works from "./lib/components/Works.svelte";
   import Contact from "./lib/components/Contact.svelte";
   import Footer from "./lib/components/Footer.svelte";
+    import GitRepos from "./lib/components/Git_Repos.svelte";
 
   window.addEventListener("load", () => {
     const circleContainer = document.getElementById("circle-container") as HTMLElement;
@@ -49,6 +50,7 @@
   <About/>
   <Skills/>
   <Works/>
+  <GitRepos/>
   <Contact/>
 </div>
 
