@@ -1,39 +1,63 @@
-footer{
-  
-    display: block;
-    padding: 50px;
-    --s: 30px;
-    
-    --_c: #102558;
-    background:
-      conic-gradient(at 50% calc(100%/6),var(--_c) 60deg,#0000 0),
-      conic-gradient(at calc(100%/6) 50%,#0000 240deg,var(--_c) 0),
-      conic-gradient(from 180deg at calc(100%/6) calc(500%/6),var(--_c) 60deg,#0000 0),
-      conic-gradient(from 180deg at calc(500%/6),#0000 240deg,var(--_c) 0) calc(4*.866*var(--s)) 0,
-      repeating-linear-gradient(-150deg,#150b4b 0 calc(100%/6),#0000   0 50%),
-      repeating-linear-gradient(-30deg, #342c83 0 calc(100%/6),#0b0730 0 50%);
-    background-size: calc(6*.866*var(--s)) calc(3*var(--s))
-   }
-  
-   .web_links{
-    display: flex;
-    justify-self: center;
-    text-align: center;
-   }
-  
-   .web_links ul{
-    display: flex;
-    gap: 10vmin;
-   }
-  
-   .social_media_links{
-    display: flex;
-   }
-  
-   .footer-container{
-    backdrop-filter: blur(10px);
-    padding: 10px;
-    border-radius: 20px;
-    border: 2px solid #0a6fb6;
-   }
-  
+.footer {
+  padding: 60px 0;
+  background-color: #0c0c14;
+  color: #ffffff;
+  border-top: 1px solid #29294b;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.web_links ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.web_links ul li a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.web_links ul li a:hover {
+  color: #5b55a0;
+}
+
+.social_media_links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social_media_links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social_media_links a:hover {
+  background-color: #312e52;
+  border-color: #312e52;
+}
+
+.social_media_links svg {
+  width: 18px;
+  height: 18px;
+  fill: #ffffff;
+}
+
+.separator {
+  margin: 0 auto;
+}

@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import gsap from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import "../css/about.css"
 
     onMount(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -66,7 +67,7 @@
     });
 </script>
 
-<section class="about" id="about">
+<section class="about h-screen w-screen" id="about">
     <h1 class="title">Who am I?</h1>
     <p class="bio">
       I'm Bourouba Mohamed El Khalil, a dynamic force in the fields of <span class="dev">front-end</span> and <span class="dev">back-end development</span>, infused with a strong sense of captivating <span class="design">UI/UX design</span>. I'm very interested in exciting areas of conceptual design and innovation, and I'm always trying to navigate the ever-changing landscape of Computer Science (CS) and design. Let's start this exciting odyssey together and create a way to do truly <span class="sparkle">awesome</span> and <span class="sparkle">amazing things</span>!

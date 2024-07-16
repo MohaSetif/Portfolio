@@ -46,11 +46,11 @@
   
 <Home/>
 
-<div class="body block justify-center items-center min-h-screen bg-center bg-gray-100 dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+<div class="body block justify-center items-center min-h-screen bg-center">
   <About/>
   <Skills/>
   <Works/>
-  <GitRepos/>
+  <!-- <GitRepos/> -->
   <Contact/>
 </div>
 

@@ -2,31 +2,25 @@
     import "../css/home.css"
 </script>
 
-<div class="header" id="home">
-    <div id="left-side" class="side">
-    <h2 class="title">
-        "The intelligent use of science and technology are the tools with which to achieve a new direction."
-        <span class="fancy">-Jacque Fresco</span>      
-    </h2>
+<div class="header bg-gray-950 h-screen w-screen flex justify-center items-center" id="home">
+    <div class="container flex absolute z-10">
+        <div class="circle d1" style="animation-delay: -14s"></div>
+        <div class="circle d2" style="animation-delay: -13s"></div>
+        <div class="circle d3" style="animation-delay: -12s"></div>
+        <div class="circle d1" style="animation-delay: -11s"></div>
+        <div class="circle d2" style="animation-delay: -10s"></div>
+        <div class="circle d3" style="animation-delay: -9s"></div>
+        <div class="circle d1" style="animation-delay: -8s"></div>
+        <div class="circle d2" style="animation-delay: -7s"></div>
+        <div class="circle d3" style="animation-delay: -6s"></div>
+        <div class="circle d1" style="animation-delay: -5s"></div>
+        <div class="circle d2" style="animation-delay: -4s"></div>
+        <div class="circle d3" style="animation-delay: -3s"></div>
+        <div class="circle d1" style="animation-delay: -2s"></div>
+        <div class="circle d2" style="animation-delay: -1s"></div>
+        <div class="circle d3" style="animation-delay: -0s"></div>
     </div>
-    <div id="right-side" class="side">
-    <h2 class="title">
-        "Science and technology can solve all the world's problems, and historically it has been shown to make the world better and better."  
-        <span class="fancy">-Zoltan Istvan</span>     
-    </h2>
-    <div class="solar_system">
-        <div class="sun"></div>
-        <div class="first_planet-outline">
-        <div class="first_planet"></div>
-        </div>
-    
-        <div class="second_planet-outline">
-        <div class="second_planet"></div>
-        </div>
-    
-        <div class="third_planet-outline">
-        <div class="third_planet"></div>
-        </div>
-    </div>
-    </div>
+   <p class="text-4xl md:text-7xl text-center absolute z-20">
+        Innovative developer and designer creating distinct web experiences
+   </p>
 </div>

@@ -41,6 +41,9 @@ dependencies:
   ts-node:
     specifier: ^10.9.2
     version: 10.9.2(@types/node@20.14.7)(typescript@5.4.5)
+  wtc-gl:
+    specifier: 1.2.0-beta.1
+    version: 1.2.0-beta.1(wtc-math@1.0.20)
 
 devDependencies:
   '@sveltejs/vite-plugin-svelte':
@@ -1623,6 +1626,12 @@ packages:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
     dev: true
 
+  /typescript@4.9.5:
+    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: false
+
   /typescript@5.4.5:
     resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
     engines: {node: '>=14.17'}
@@ -1725,6 +1734,20 @@ packages:
   /wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
     dev: true
+
+  /wtc-gl@1.2.0-beta.1(wtc-math@1.0.20):
+    resolution: {integrity: sha512-0WgnJRXoR55Qc/sW/A0Dlnmr5L00J10rBH/AXN/fZWanvh3mVLqiPOlsykSSI+EoXMjkANqf54d+69k5rXLf9w==}
+    peerDependencies:
+      wtc-math: ^1.0.20
+    dependencies:
+      wtc-math: 1.0.20
+    dev: false
+
+  /wtc-math@1.0.20:
+    resolution: {integrity: sha512-jBrsnoElLPQetOmQEhiqHbcUEbltYrMM85BML/nmFkYfOfu5/PTt75xeSrt/xuHJ785VlffCQVBL/S8NUCXnIw==}
+    dependencies:
+      typescript: 4.9.5
+    dev: false
 
   /yaml@2.4.5:
     resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}

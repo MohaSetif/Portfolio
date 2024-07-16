@@ -26,11 +26,11 @@
 </script>
 
 <section class="repos mt-[8rem]" id="repos">
-    <div class="container m-12 mx-auto p-4 bg-gray-900 text-white">
+    <div class="container m-12 mx-auto p-4 text-white">
         <h1 class="title">My Github Repositories</h1>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {#each repos as repo}
-            <div class="bg-gray-800 border border-gray-600 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between">
+            <div class="bg-gray-900 border border-gray-600 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between">
               <div>
                 <h3 class="text-lg font-semibold mb-2 text-blue-400 truncate">{repo.name}</h3>
                 <p class="text-gray-300 mb-4 text-sm h-16 overflow-hidden">{repo.description || 'No description available'}</p>
