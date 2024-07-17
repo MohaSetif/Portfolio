@@ -18,9 +18,13 @@
         window.addEventListener('scroll', function(e) {
             Y = window.scrollY;
             if (Y > 50) {
+              if(navbar !== null){
                 navbar.classList.add('scrolled');
+              }
             } else {
+              if(navbar !== null){
                 navbar.classList.remove('scrolled');
+              }
             }
         }); 
     });
@@ -31,16 +35,18 @@
         isMenuOpen = !isMenuOpen;
     }
 
-    function addBounceInAnimation(element, delay) {
+    function addBounceInAnimation(element: Element, delay: number) {
     const text = element.textContent;
     element.innerHTML = '';
 
-    for (let i = 0; i < text.length; i++) {
-      const span = document.createElement('span');
-      span.textContent = text[i];
-      span.classList.add('bounce-in-right');
-      span.style.animationDelay = `${i * delay}ms`; // Adjust the delay as needed
-      element.appendChild(span);
+    if(text !== null){
+      for (let i = 0; i < text.length; i++){
+        const span = document.createElement('span');
+        span.textContent = text[i];
+        span.classList.add('bounce-in-right');
+        span.style.animationDelay = `${i * delay}ms`
+        element.appendChild(span);
+      }
     }
   }
 

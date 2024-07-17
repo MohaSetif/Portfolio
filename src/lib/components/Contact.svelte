@@ -79,7 +79,7 @@
             </div>
             <button 
               type="submit" 
-              class="w-full text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-950 transition duration-300"
+              class="w-full text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-900 border border-blue-900 transition duration-300"
             >
               Send Message
             </button>

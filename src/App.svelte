@@ -46,7 +46,7 @@
   
 <Home/>
 
-<div class="body block justify-center items-center min-h-screen bg-center">
+<div class="body block justify-center items-center min-h-screen bg-center z-20">
   <About/>
   <Skills/>
   <Works/>

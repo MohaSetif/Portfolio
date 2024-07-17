@@ -1,141 +1,145 @@
 .nav {
-    height: 50px;
-    width: 100%;
-    position: fixed;
-    z-index: 9999;
-    display: flex;
-  }
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  transition: background-image 0.3s ease, backdrop-filter 0.3s ease;
+}
 
-  .scrolled{
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgb(73, 141, 231);
-  }
+.scrolled {
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+  backdrop-filter: blur(10px);
+}
 
+
+.logo_img{
+  width: 2.5%;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header{
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: flex;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav > .nav-links > a:hover {
+  text-decoration: underline;
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@keyframes bounce-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-30px);
+  }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+
+@media (max-width:600px) {
   .logo_img{
-    width: 2.5%;
+      width: 5%;
   }
-  
-  .nav > .nav-header {
-    display: inline;
-  }
-  
-  .nav > .nav-header{
-    display: inline-block;
-    font-size: 22px;
-    color: #fff;
-    padding: 10px 10px 10px 10px;
-  }
-  
+
   .nav > .nav-btn {
-    display: none;
-  }
-  
-  .nav > .nav-links {
-    display: flex;
-    float: right;
-    font-size: 18px;
-  }
-  
-  .nav > .nav-links > a {
     display: inline-block;
-    padding: 13px 10px 13px 10px;
-    text-decoration: none;
-    color: #efefef;
+    position: absolute;
+    right: 0px;
+    top: 0px;
   }
-  
-  .nav > .nav-links > a:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  
-  .nav > #nav-check {
-    display: none;
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
   }
 
-  @keyframes bounce-in-right {
-    0% {
-      opacity: 0;
-      transform: translateX(2000px);
-    }
-    60% {
-      opacity: 1;
-      transform: translateX(-30px);
-    }
-    80% { transform: translateX(10px); }
-    100% { transform: translateX(0); }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
   }
-  
-  
-  @media (max-width:600px) {
-    .logo_img{
-        width: 5%;
-    }
-
-    .nav > .nav-btn {
-      display: inline-block;
-      position: absolute;
-      right: 0px;
-      top: 0px;
-    }
-    .nav > .nav-btn > label {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      padding: 13px;
-    }
-    /* .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-      background-color: rgba(0, 0, 0, 0.3);
-    } */
-    .nav > .nav-btn > label > span {
-      display: block;
-      width: 25px;
-      height: 10px;
-      border-top: 2px solid #eee;
-    }
-    .nav > .nav-links {
-      position: absolute;
-      display: block;
-      width: 100%;
-      background-color: #333;
-      height: 0px;
-      transition: all 0.3s ease-in;
-      overflow-y: hidden;
-      top: 50px;
-      left: 50%;
-      border-top-left-radius: 20px;
-    }
-    .nav > .nav-links > a {
-      display: block;
-      padding: 20px;
-      width: 100%;
-    }
-    .nav > #nav-check:not(:checked) ~ .nav-links {
-      height: 0px;
-    }
-    .nav > #nav-check:checked ~ .nav-links {
-      height: calc(100vh - 50px);
-      overflow-y: auto;
-    }
-
-    .nav-links a span {
-      display: inline-block;
-      transform: translateX(2000px);
-    }
-  
-    .nav #nav-check:checked ~ .nav-links a span {
-      animation: bounce-in-right 1.5s ease 1;
-    }
-  
-    .nav #nav-check:checked ~ .nav-links {
-      display: block;
-      width: 50%;
-      background-color: #333;
-      overflow: hidden;
-      top: 50px;
-      right: 0;
-      border-top-left-radius: 20px;
-    }
-  
-    .nav #nav-check:checked ~ .nav-links a span {
-      animation-fill-mode: both;
-    }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 50%;
+    border-top-left-radius: 20px;
   }
+  .nav > .nav-links > a {
+    display: block;
+    padding: 20px;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+
+  .nav-links a span {
+    display: inline-block;
+    transform: translateX(2000px);
+  }
+
+  .nav #nav-check:checked ~ .nav-links a span {
+    animation: bounce-in-right 1.5s ease 1;
+  }
+
+  .nav #nav-check:checked ~ .nav-links {
+    display: block;
+    width: 50%;
+    background-color: #333;
+    overflow: hidden;
+    top: 50px;
+    right: 0;
+    border-top-left-radius: 20px;
+  }
+
+  .nav #nav-check:checked ~ .nav-links a span {
+    animation-fill-mode: both;
+  }
+}
