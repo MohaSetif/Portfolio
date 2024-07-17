@@ -1,7 +1,7 @@
 <script lang="ts">
     import logo from "../img/khalil logo color (2).png"
     import "../css/navbar.css"
-    import { afterUpdate, onMount } from "svelte";
+    import { onMount } from "svelte";
 
     onMount(() => {
         let Y = 0;
@@ -28,48 +28,6 @@
             }
         }); 
     });
-
-    let isMenuOpen = false;
-
-    function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
-    }
-
-    function addBounceInAnimation(element: Element, delay: number) {
-    const text = element.textContent;
-    element.innerHTML = '';
-
-    if(text !== null){
-      for (let i = 0; i < text.length; i++){
-        const span = document.createElement('span');
-        span.textContent = text[i];
-        span.classList.add('bounce-in-right');
-        span.style.animationDelay = `${i * delay}ms`
-        element.appendChild(span);
-      }
-    }
-  }
-
-  afterUpdate(() => {
-    if (isMenuOpen) {
-      const menuItems = document.querySelectorAll('.nav-links a');
-      const delayBetweenLetters = 100;
-
-      menuItems.forEach((menuItem) => {
-        addBounceInAnimation(menuItem, delayBetweenLetters);
-      });
-    }
-  });
-
-  onMount(() => {
-    const menuItems = document.querySelectorAll('.nav-links a');
-    const delayBetweenLetters = 100; // Adjust the delay in milliseconds
-
-    menuItems.forEach((menuItem) => {
-      addBounceInAnimation(menuItem, delayBetweenLetters);
-    });
-  });
-
 </script>
 
 <!-- <header class="navbar">

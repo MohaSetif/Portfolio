@@ -20,7 +20,7 @@
 
 <section class="works" id="works">
     <h1 class="title">My works</h1>
-    <div class="images_container">
+    <div class="images_container px-4">
       {#each web_images as image}
         <img src={image.src} alt={image.name} width="768px" height="432px">
         <!-- <span>{image.name}</span> -->
