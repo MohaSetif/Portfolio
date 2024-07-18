@@ -116,7 +116,7 @@
     height: 0px;
   }
   .nav > #nav-check:checked ~ .nav-links {
-    height: calc(100vh - 50px);
+    height: calc(50vh - 50px);
     overflow-y: auto;
   }
 
@@ -132,12 +132,13 @@
   .nav #nav-check:checked ~ .nav-links {
     display: block;
     width: 50%;
-    background-color: #21202e;
+    background-color: #21202ef5;
     border: 1px solid #423f61;
     overflow: hidden;
     top: 50px;
     right: 0;
     border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
   }
 
   .nav #nav-check:checked ~ .nav-links a span {
