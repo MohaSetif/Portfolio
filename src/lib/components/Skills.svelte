@@ -61,7 +61,7 @@
         <div class="p-4 bg-indigo-950/20 rounded-2xl border border-indigo-400/50 sm:p-6 md:p-8 lg:p-12 h-36 sm:h-40 md:h-44 lg:h-48 flex justify-center items-center logo-container group relative">
             <img src={logo.outlineSrc} class="sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-80 lg:w-80 rounded-lg outline_img transition-all duration-300" alt={logo.alt} />
             <img src={logo.src} class="sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-80 lg:w-80 rounded-lg normal absolute transition-all duration-300 opacity-0" alt={logo.alt} />
-            <div class="label absolute mt-[4rem] sm:mt-[5rem] md:mt-[6rem] lg:mt-[7rem] p-2 bg-gray-800 text-white text-xs sm:text-sm rounded-md shadow-md opacity-0 transition-all duration-300">
+            <div class="label absolute mt-[6rem] sm:mt-[7rem] md:mt-[8rem] lg:mt-[9rem] p-2 bg-gray-800 text-white text-xs sm:text-sm rounded-md shadow-md opacity-0 transition-all duration-300">
               {logo.alt}
             </div>
         </div>
