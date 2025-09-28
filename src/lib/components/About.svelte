@@ -77,7 +77,7 @@ onMount(() => {
       <img src={my_pic} alt="Bourouba Mohamed Khalil" class="bio-img" />
       <div class="img-glow"></div>
     </div>
-    <p class="bio bio-text ml-12">
+    <p class="bio bio-text mx-4 md:ml-12">
       I'm <span class="bold">Bourouba Mohamed El Khalil</span>, a <span class="bold">cybersecurity</span> graduate and a
       <span class="bold">full-stack</span> developer,
       with a passion for <span class="bold">UI/UX design</span>. I explore conceptual design and innovation while navigating the ever-changing landscape of Computer Science.
