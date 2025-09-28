@@ -6,18 +6,23 @@
   let sendername = '';
   let subject = '';
   let message = '';
+  let loading = false;
 
   const sendMail = (event: Event) => {
     event.preventDefault();
     emailjs.init("nwgs7MHKu2gcb9_nS");
+    loading = true;
 
     const params = { sendername, subject, message, replyto: "" };
 
-    const serviceID = "service_xo4l9xq";
+    const serviceID = "service_1s1m92q";
     const templateID = "template_437s6mz";
 
     emailjs.send(serviceID, templateID, params)
-      .then(() => alert("Email sent successfully!"))
+      .then(() => {
+        loading = false;
+        alert("Email sent successfully!")
+      })
       .catch(() => alert("Something went wrong!"));
   };
 
@@ -78,10 +83,15 @@
               ></textarea>
             </div>
             <button 
-              type="submit" 
-              class="w-full text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-900 border border-blue-900 transition duration-300"
+              type="submit"
+              disabled={loading} 
+              class={`w-full text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-900 border border-blue-900 transition duration-300 ${loading ? 'opacity-50 cursor-not-allowed' : 'bg-blue-950'}`}
             >
-              Send Message
+              {#if loading}
+                Sending...
+              {:else}
+                Send Message
+              {/if}
             </button>
           </form>
         </div>
