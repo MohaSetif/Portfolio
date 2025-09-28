@@ -1,147 +1,152 @@
+/* ================================
+   NAVBAR BASE STYLES
+=================================*/
 .nav {
-  height: 70px;
-  width: 100%;
   position: fixed;
-  z-index: 9999;
+  top: 10px; /* give it breathing room from the very top */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  height: 60px;
+  border-radius: 100px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  padding: 20px;
-  transition: background-image 0.3s ease, backdrop-filter 0.3s ease;
-}
-
-.scrolled {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+  padding: 0 1.5rem;
+  background: linear-gradient(to top, rgba(23, 27, 35, 0.65), rgba(25, 29, 43, 0.65));
+  border: 1px solid #a0a6ff6e;
+  z-index: 9999;
   backdrop-filter: blur(10px);
 }
 
-
-.logo_img{
-  width: 2.5%;
+.logo_img {
+  width: 1.25rem;
 }
 
-.nav > .nav-header {
-  display: inline;
-}
-
-.nav > .nav-header{
-  display: inline-block;
-  font-size: 22px;
-  color: #fff;
-  padding: 10px 10px 10px 10px;
-}
-
-.nav > .nav-btn {
-  display: none;
-}
-
-.nav > .nav-links {
+.nav-links {
   display: flex;
-  float: right;
-  font-size: 18px;
+  gap: 1.5rem;
+  align-items: center;
 }
 
-.nav > .nav-links > a {
-  display: inline-block;
-  padding: 13px 10px 13px 10px;
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
+}
+
+.nav-link svg {
+  width: 22px;
+  height: 22px;
   color: #efefef;
+  transition: transform 0.2s ease;
 }
 
-.nav > .nav-links > a:hover {
-  text-decoration: underline;
+.nav-link:hover svg {
+  transform: scale(1.1);
 }
 
-.nav > #nav-check {
+.nav-btn {
   display: none;
 }
 
-@keyframes bounce-in-right {
-  0% {
-    opacity: 0;
-    transform: translateX(2000px);
-  }
-  60% {
-    opacity: 1;
-    transform: translateX(-30px);
-  }
-  80% { transform: translateX(10px); }
-  100% { transform: translateX(0); }
+#nav-check {
+  display: none;
 }
 
+.close-btn {
+  display: none;
+}
 
-@media (max-width:600px) {
-  .logo_img{
-      width: 5%;
+.label_display {
+  display: none;
+}
+
+/* ================================
+   MOBILE STYLES
+=================================*/
+@media (max-width: 700px) {
+  /* Navbar becomes full-width pill */
+  .nav {
+    width: calc(100% - 1rem);
+    left: 0.5rem;
+    transform: none;
+    padding: 0 1rem;
   }
 
-  .nav > .nav-btn {
-    display: inline-block;
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 15, 0.97);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 10000; /* sits on top of navbar */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Show overlay menu when nav-check is checked */
+  #nav-check:checked ~ .nav-links {
+    display: flex;
+  }
+
+  /* Close button inside overlay */
+  .close-btn {
     position: absolute;
-    right: 10px;
-    top: 15%;
-  }
-  .nav > .nav-btn > label {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    padding: 13px;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
   }
 
-  .nav > .nav-btn > label > span {
+  #nav-check:checked ~ .nav-links .close-btn {
+    display: block;
+  }
+
+  .label_display {
+    display: block;
+    color: #efefef;
+    font-size: 1.2rem;
+    margin-top: 0.3rem;
+  }
+
+  .nav-btn {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav-btn label span {
     display: block;
     width: 25px;
-    height: 10px;
-    border-top: 2px solid #eee;
-  }
-  .nav > .nav-links {
-    position: absolute;
-    display: block;
-    width: 100%;
-    background-color: #21202e;
-    height: 0px;
-    transition: all 0.3s ease-in;
-    overflow-y: hidden;
-    top: 50px;
-    left: 50%;
-    border-top-left-radius: 20px;
-  }
-  .nav > .nav-links > a {
-    display: block;
-    padding: 20px;
-    width: 100%;
-  }
-  .nav > #nav-check:not(:checked) ~ .nav-links {
-    height: 0px;
-  }
-  .nav > #nav-check:checked ~ .nav-links {
-    height: calc(50vh - 50px);
-    overflow-y: auto;
+    height: 3px;
+    margin: 4px;
+    background: #eee;
+    border-radius: 3px;
   }
 
-  .nav-links a span {
-    display: inline-block;
-    transform: translateX(2000px);
+  .nav-link svg {
+    width: 36px;
+    height: 36px;
   }
+}
 
-  .nav #nav-check:checked ~ .nav-links a span {
-    animation: bounce-in-right 1.5s ease 1;
+/* ================================
+   ANIMATIONS
+=================================*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-
-  .nav #nav-check:checked ~ .nav-links {
-    display: block;
-    width: 50%;
-    background-color: #21202ef5;
-    border: 1px solid #423f61;
-    overflow: hidden;
-    top: 50px;
-    right: 0;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-  }
-
-  .nav #nav-check:checked ~ .nav-links a span {
-    animation-fill-mode: both;
+  to {
+    opacity: 1;
   }
 }
