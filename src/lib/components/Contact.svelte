@@ -39,7 +39,7 @@
   <div class="container mx-auto px-4">
     <h1 class="title mt-[5rem]">Let's Get in Touch</h1>
     
-    <div class="max-w-6xl mx-auto bg-gray-900 rounded-lg shadow-xl overflow-hidden">
+    <div class="max-w-6xl mt-10 mx-auto bg-gray-900 rounded-lg shadow-xl overflow-hidden">
       <div class="md:flex">
         <div class="md:flex-shrink-0 bg-blue-950 md:w-1/3 p-8 flex items-center justify-center">
           <img src={White_logo} alt="Logo" class="w-32">
