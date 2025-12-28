@@ -3,6 +3,7 @@
   import chababouna from "../img/chababouna.png";
   import spiral from "../img/spiral.png";
   import encu_quiz from "../img/Encu_quiz.png";
+  import movieland from "../img/movieland.png";
 
   interface WebImage {
     src: string;
@@ -14,7 +15,8 @@
   let web_images: WebImage[] = [
     { src: chababouna, name: 'Chababouna', description: 'Official website of an association with plenty of activities.', link: 'https://chababouna.dz' },
     { src: spiral, name: 'Create Spiral Stack', description: 'Starter package for web projects with Laravel, React, Vue, Svelte.', link: 'https://create-spiral-app.vercel.app' },
-    { src: encu_quiz, name: 'ENCU Club Quiz', description: "ENCU's quiz about entrepreneurship", link: 'https://encu-quiz.vercel.app/'}
+    { src: encu_quiz, name: 'ENCU Club Quiz', description: "ENCU's quiz about entrepreneurship", link: 'https://encu-quiz.vercel.app/'},
+    { src: movieland, name: 'Movieland', description: "Movie Gallery", link: 'https://movieland-liard.vercel.app/'}
   ];
 
   let currentIndex = 0;
