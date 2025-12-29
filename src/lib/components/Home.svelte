@@ -1,7 +1,7 @@
 <script lang=ts>
   import LightRays from './LightRays.svelte';
   import "../css/home.css";
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
 
   let width: number = 0;
   let lightSpread: number;

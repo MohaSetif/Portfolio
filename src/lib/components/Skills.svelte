@@ -26,7 +26,9 @@
   import outline_pgsql from "../img/postgresql - outline.png"
   import outline_scene_builder from "../img/sceneBuilder - outline.png"
   import outline_Docker from "../img/docker - outline.png"
-    import PixelCard from "./PixelCard.svelte";
+  import outline_Postman from "../img/postman - outline.png"
+  import outline_Fastapi from "../img/fastapi - outline.png"
+  import PixelCard from "./PixelCard.svelte";
 
   let isHovered = false;
 
@@ -50,8 +52,8 @@
       { src: pgsql, color: 'pgsql',outlineSrc: outline_pgsql, alt: 'PostgreSQL' },
       { src: scene_builder, color: 'sceneBuilder',outlineSrc: outline_scene_builder, alt: 'Scene Builder' },
       { src: Docker, color: 'docker',outlineSrc: outline_Docker, alt: 'Docker' },
-      // { src: Postman, outlineSrc: Postman, alt: 'Postman' },
-      // { src: Fastapi, outlineSrc: Fastapi, alt: 'FastAPI' },
+      { src: Postman, color: 'postman',outlineSrc: outline_Postman, alt: 'Postman' },
+      { src: Fastapi, color: 'fastapi',outlineSrc: outline_Fastapi, alt: 'FastAPI' },
   ];
 </script>
 

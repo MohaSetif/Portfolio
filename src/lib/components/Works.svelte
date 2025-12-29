@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import chababouna from "../img/chababouna.png";
   import spiral from "../img/spiral.png";
   import encu_quiz from "../img/Encu_quiz.png";

@@ -214,6 +214,20 @@
       speed: 80,
       colors: '#3178c6,#93c5fd,#bfdbfe',
       noFocus: false
+    },
+    fastapi: {
+      activeColor: '#009688',
+      gap: 4,
+      speed: 80,
+      colors: '#009688,#4db6ac,#80cbc4',
+      noFocus: false
+    },
+    postman: {
+      activeColor: '#ff6c37',
+      gap: 4,
+      speed: 80,
+      colors: '#ff6c37,#ff9b82,#ffc1b0',
+      noFocus: false
     }
   } as const;
 
