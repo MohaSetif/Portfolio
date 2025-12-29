@@ -1,5 +1,4 @@
 <script lang=ts>
-  import Aurora from './Aurora.svelte';
   import LightRays from './LightRays.svelte';
   import "../css/home.css";
   import { onMount, onDestroy } from 'svelte';
