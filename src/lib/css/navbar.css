@@ -3,21 +3,27 @@
 =================================*/
 .nav {
   position: fixed;
-  top: 10px; /* give it breathing room from the very top */
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
+  width: calc(100% - 2rem);
   max-width: 600px;
   height: 60px;
-  border-radius: 100px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1.5rem;
-  background: linear-gradient(to top, rgba(23, 27, 35, 0.65), rgba(25, 29, 43, 0.65));
-  border: 1px solid #a0a6ff6e;
+
+  border-radius: 100px;
   z-index: 9999;
-  backdrop-filter: blur(10px);
+
+  /* Glass effect */
+  background: rgba(23, 27, 35, 0.45);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+
+  border: 1px solid rgba(160, 166, 255, 0.35);
 }
 
 .logo_img {

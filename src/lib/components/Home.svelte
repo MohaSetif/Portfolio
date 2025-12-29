@@ -1,12 +1,46 @@
-<script>
-    import "../css/home.css"
+<script lang=ts>
+  import Aurora from './Aurora.svelte';
+  import LightRays from './LightRays.svelte';
+  import "../css/home.css";
+  import { onMount, onDestroy } from 'svelte';
+
+  let width: number = 0;
+  let lightSpread: number;
+
+  onMount(() => {
+    width = window.innerWidth;
+    window.onresize = () => width = window.innerWidth;
+  });
+
+  $: lightSpread = width <= 768 ? 8 : 4;
+  
 </script>
 
-<div class="header overflow-hidden absolute top-0 z-[-2] bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(41,68,161,0.6),rgba(255,255,255,0))] h-screen w-screen flex justify-center items-center" id="home">
-    <div class="mic">
-        <div class="mic-shadow"></div>
-    </div>
 
-    <h1 class="p-12">Cybersecurity Enthusiast, Innovative Developer, and Designer Creating Distinct Web Experiences</h1>
-</div>
+<section class="relative h-screen w-full overflow-hidden">
+  <!-- Background layer -->
+  <div class="absolute inset-0 z-0">
+    <LightRays
+      raysOrigin="top-center"
+      raysColor="#A287C9"
+      raysSpeed={2}
+      lightSpread={lightSpread}
+      rayLength={1}
+      followMouse={true}
+      mouseInfluence={0.1}
+      noiseAmount={0.1}
+      distortion={0.05}
+      className="custom-rays"
+    />
+  </div>
 
+  <!-- Centered Content -->
+  <div class="relative z-10 flex items-center justify-center h-full px-4">
+    <h1 class="text-white font-bold text-center 
+               text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
+               leading-snug sm:leading-snug md:leading-tight lg:leading-tight 
+               max-w-6xl">
+      Cybersecurity Enthusiast, Innovative Developer, and Designer Creating Distinct Web Experiences
+    </h1>
+  </div>
+</section>
