@@ -26,46 +26,69 @@
   import outline_pgsql from "../img/postgresql - outline.png"
   import outline_scene_builder from "../img/sceneBuilder - outline.png"
   import outline_Docker from "../img/docker - outline.png"
+    import PixelCard from "./PixelCard.svelte";
 
   let isHovered = false;
 
   interface Logo {
       src: string;
       outlineSrc: string;
+      color: any;
       alt: string;
   }
 
   let logos: Logo[] = [
-      { src: Typescript, outlineSrc: outline_Typescript, alt: 'TypeScript' },
-      { src: Javascript, outlineSrc: outline_Javascript, alt: 'JavaScript' },
-      { src: Laravel, outlineSrc: outline_Laravel, alt: 'Laravel' },
-      { src: React, outlineSrc: outline_React, alt: 'React' },
-      { src: MySQL, outlineSrc: outline_MySQL, alt: 'MySQL' },
-      { src: Svelte, outlineSrc: outline_Svelte, alt: 'Svelte/SvelteKit' },
-      { src: Tailwind, outlineSrc: outline_Tailwind, alt: 'Tailwind' },
-      { src: Bootstrap, outlineSrc: outline_Bootstrap, alt: 'Bootstrap' },
-      { src: Java, outlineSrc: outline_Java, alt: 'Java' },
-      { src: pgsql, outlineSrc: outline_pgsql, alt: 'PostgreSQL' },
-      { src: scene_builder, outlineSrc: outline_scene_builder, alt: 'Scene Builder' },
-      { src: Docker, outlineSrc: outline_Docker, alt: 'Docker' },
+      { src: Typescript, color: 'ts',outlineSrc: outline_Typescript, alt: 'TypeScript' },
+      { src: Javascript, color: 'js',outlineSrc: outline_Javascript, alt: 'JavaScript' },
+      { src: Laravel, color: 'laravel',outlineSrc: outline_Laravel, alt: 'Laravel' },
+      { src: React, color: 'react',outlineSrc: outline_React, alt: 'React' },
+      { src: MySQL, color: 'mysql',outlineSrc: outline_MySQL, alt: 'MySQL' },
+      { src: Svelte, color: 'svelte',outlineSrc: outline_Svelte, alt: 'Svelte/SvelteKit' },
+      { src: Tailwind, color: 'tailwind',outlineSrc: outline_Tailwind, alt: 'Tailwind' },
+      { src: Bootstrap, color: 'bootstrap',outlineSrc: outline_Bootstrap, alt: 'Bootstrap' },
+      { src: Java, color: 'java',outlineSrc: outline_Java, alt: 'Java' },
+      { src: pgsql, color: 'pgsql',outlineSrc: outline_pgsql, alt: 'PostgreSQL' },
+      { src: scene_builder, color: 'sceneBuilder',outlineSrc: outline_scene_builder, alt: 'Scene Builder' },
+      { src: Docker, color: 'docker',outlineSrc: outline_Docker, alt: 'Docker' },
       // { src: Postman, outlineSrc: Postman, alt: 'Postman' },
       // { src: Fastapi, outlineSrc: Fastapi, alt: 'FastAPI' },
   ];
 </script>
 
 <section class="skills" id="skills">
-    <div class="lang_logos m-12">
+  <div class="lang_logos m-12">
     <h1 class="title">My skills</h1>
     <div class="my_skills mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 justify-center items-center">
-        {#each logos as logo}
-        <div class="p-4 bg-indigo-950/20 rounded-2xl border border-indigo-400/50 sm:p-6 md:p-8 lg:p-12 h-36 sm:h-40 md:h-44 lg:h-48 flex justify-center items-center logo-container group relative">
-            <img src={logo.outlineSrc} class="sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-80 lg:w-80 rounded-lg outline_img transition-all duration-300" alt={logo.alt} />
-            <img src={logo.src} class="sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-80 lg:w-80 rounded-lg normal absolute transition-all duration-300 opacity-0" alt={logo.alt} />
-            <div class="label absolute mt-[6rem] sm:mt-[7rem] md:mt-[8rem] lg:mt-[9rem] p-2 bg-gray-800 text-white text-xs sm:text-sm rounded-md shadow-md opacity-0 transition-all duration-300">
-              {logo.alt}
+      {#each logos as logo}
+        <div class="rounded-2xl border border-indigo-400/30 h-36 sm:h-40 md:h-44 lg:h-48 flex justify-center items-center logo-container group relative">
+          <PixelCard variant={logo.color}>            
+            <div class="relative w-full h-full flex items-center justify-center">
+              
+            <!-- Outline -->
+            <img
+            src={logo.outlineSrc}
+            alt={logo.alt}
+            class="w-2/5 h-2/5 object-contain transition-all duration-300 ease-in-out transform group-hover:scale-110 group-hover:opacity-0"
+            />
+
+            <!-- Color -->
+            <img
+            src={logo.src}
+            alt={logo.alt}
+            class="absolute w-2/5 h-2/5 object-contain transition-all duration-300 ease-in-out transform opacity-0 group-hover:scale-110 group-hover:opacity-100"
+            />
+
+              <!-- Label -->
+              <div
+                class="absolute bottom-2 bg-gray-800 text-white text-xs sm:text-sm px-2 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300"
+              >
+                {logo.alt}
+              </div>
+
             </div>
+          </PixelCard>
         </div>
-        {/each}
+      {/each}
     </div>
-    </div>
+  </div>
 </section>

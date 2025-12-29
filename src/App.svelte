@@ -1,6 +1,7 @@
 <script lang="ts">
   import "./lib/css/page.css";
   import "./lib/css/tailwind.css";
+  //import "./lib/css/global.css";
   import Navbar from "./lib/components/Navbar.svelte";
   import Home from "./lib/components/Home.svelte";
   import About from "./lib/components/About.svelte";
