@@ -70,8 +70,8 @@ onMount(() => {
 </script>
 
 
-<section class="about h-screen w-screen" id="about">
-  <h1 class="title bio-title">Who am I?</h1>
+<section class="about min-h-screen w-full" id="about">
+  <h1 class="title bio-title text-center">Who am I?</h1>
   <div class="bio-container flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 mt-10 px-5 md:px-20">
     <div class="bio-img-wrapper">
       <img src={my_pic} alt="Bourouba Mohamed Khalil" class="bio-img" />

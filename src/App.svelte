@@ -9,10 +9,12 @@
   import Works from "./lib/components/Works.svelte";
   import Contact from "./lib/components/Contact.svelte";
   import Footer from "./lib/components/Footer.svelte";
-    import GitRepos from "./lib/components/Git_Repos.svelte";
+  import GitRepos from "./lib/components/Git_Repos.svelte";
 
   window.addEventListener("load", () => {
-    const circleContainer = document.getElementById("circle-container") as HTMLElement;
+    const circleContainer = document.getElementById(
+      "circle-container",
+    ) as HTMLElement;
     const circle = document.getElementById("circle") as HTMLElement;
 
     circleContainer.style.left = "-9999px";
@@ -29,30 +31,28 @@
       circle.animate(
         {
           left: `${x}px`,
-          top: `${y}px`
+          top: `${y}px`,
         },
-        { duration: 1000, fill: "forwards" }
+        { duration: 1000, fill: "forwards" },
       );
     };
   });
-
 </script>
 
-
-<Navbar/>
+<Navbar />
 
 <div id="circle-container">
   <div id="circle"></div>
 </div>
-  
-<Home/>
 
-<div class="body block justify-center items-center min-h-screen bg-center z-20">
-  <About/>
-  <Skills/>
-  <Works/>
+<Home />
+
+<div class="z-20 overflow-x-hidden">
+  <About />
+  <Skills />
+  <Works />
   <!-- <GitRepos/> -->
-  <Contact/>
+  <Contact />
 </div>
 
-<Footer/>
+<Footer />
