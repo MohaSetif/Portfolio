@@ -10,7 +10,7 @@ onMount(() => {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: "#about-section",
-      start: "top 75%",
+      start: "top 85%",
       once: true,
     }
   });
