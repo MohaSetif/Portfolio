@@ -1,12 +1,15 @@
 <script lang="ts">
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { onMount } from "svelte";
+  import { ArrowUpRight } from "lucide-svelte";
   import chababouna from "../img/chababouna.png";
   import spiral from "../img/spiral.png";
   import encu_quiz from "../img/Encu_quiz.png";
   import tilawah from "../img/tilawah.png";
-
   import tilawah_mobile from "../img/tilawah_mobile.jpg";
   import aklee from "../img/aklee.jpg";
-  import campus from "../img/campus.png"
+  import campus from "../img/campus.png";
 
   interface Project {
     src: string;
@@ -15,6 +18,7 @@
     purpose: string;
     impact: string;
     link?: string;
+    accentColor: string;
   }
 
   interface MobileProject {
@@ -24,309 +28,295 @@
     purpose: string;
     impact: string;
     link?: string;
+    accentColor: string;
   }
 
   let projects: Project[] = [
-    { 
-      src: chababouna, 
-      name: 'Chababouna', 
-      tagline: 'Empowering Youth Through Digital Presence',
-      purpose: 'Built to give the Chababouna association a modern digital platform to showcase their mission, activities, and connect with the community they serve.',
-      impact: 'Enabled the organization to reach more youth, streamline event registrations, and establish credibility through professional online presence.',
-      link: 'https://chababouna.dz' 
+    {
+      src: chababouna,
+      name: "Chababouna",
+      tagline: "Empowering Youth Through Digital Presence",
+      purpose: "Built to give the Chababouna association a modern digital platform to showcase their mission, activities, and connect with the community they serve.",
+      impact: "Enabled the organization to reach more youth, streamline event registrations, and establish credibility through professional online presence.",
+      link: "https://chababouna.dz",
+      accentColor: "from-emerald-500/40 to-teal-600/40",
     },
-    { 
-      src: spiral, 
-      name: 'Create Spiral Stack', 
-      tagline: 'Accelerating Web Development Workflows',
-      purpose: 'Created to eliminate repetitive setup work and help developers launch projects faster with a production-ready starter package combining Laravel with modern frontend frameworks.',
-      impact: 'Reduced project initialization time from hours to minutes, allowing developers to focus on building features rather than configuring tooling.',
-      link: 'https://create-spiral-app.vercel.app' 
+    {
+      src: spiral,
+      name: "Create Spiral Stack",
+      tagline: "Accelerating Web Development Workflows",
+      purpose: "Created to eliminate repetitive setup work and help developers launch projects faster with a production-ready starter package combining Laravel with modern frontend frameworks.",
+      impact: "Reduced project initialization time from hours to minutes, allowing developers to focus on building features rather than configuring tooling.",
+      link: "https://create-spiral-app.vercel.app",
+      accentColor: "from-purple-500/40 to-blue-600/40",
     },
-    { 
-      src: encu_quiz, 
-      name: 'ENCU Club Quiz', 
-      tagline: 'Gamifying Entrepreneurship Education',
-      purpose: 'Developed to make entrepreneurship learning interactive and engaging for university students, transforming theoretical concepts into an exciting quiz experience.',
-      impact: 'Increased student participation in entrepreneurship programs and made business concepts more accessible through gamification.',
-      link: 'https://encu-quiz.vercel.app/'
+    {
+      src: encu_quiz,
+      name: "ENCU Club Quiz",
+      tagline: "Gamifying Entrepreneurship Education",
+      purpose: "Developed to make entrepreneurship learning interactive and engaging for university students, transforming theoretical concepts into an exciting quiz experience.",
+      impact: "Increased student participation in entrepreneurship programs and made business concepts more accessible through gamification.",
+      link: "https://encu-quiz.vercel.app/",
+      accentColor: "from-violet-500/40 to-amber-600/40",
     },
-    { 
-      src: tilawah, 
-      name: 'Tilawah', 
-      tagline: 'Connecting Muslims to Spiritual Practice',
-      purpose: 'Built to provide a beautiful, accessible platform for Quran recitation and prayer times, helping Muslims maintain their daily spiritual routines.',
-      impact: 'Serves as a daily companion for users seeking to strengthen their connection with the Quran and stay consistent with prayer schedules.',
-      link: 'https://tilawah-kappa.vercel.app/'
+    {
+      src: tilawah,
+      name: "Tilawah",
+      tagline: "Connecting Muslims to Spiritual Practice",
+      purpose: "Built to provide a beautiful, accessible platform for Quran recitation and prayer times, helping Muslims maintain their daily spiritual routines.",
+      impact: "Serves as a daily companion for users seeking to strengthen their connection with the Quran and stay consistent with prayer schedules.",
+      link: "https://tilawah-kappa.vercel.app/",
+      accentColor: "from-red-500/40 to-amber-600/40",
     },
-    { 
-      src: campus, 
-      name: 'CampusMS', 
-      tagline: 'A School Management System for Headmasters and Teachers',
-      purpose: 'Built to provide a beautiful, accessible platform for managing school operations, helping headmasters and teachers streamline their workflows.',
-      impact: 'Simplifies administrative tasks and improves communication between staff, students, and employees.',
-      link: 'https://campus.sevalla.app/'
-    }
+    {
+      src: campus,
+      name: "CampusMS",
+      tagline: "A School Management System for Headmasters and Teachers",
+      purpose: "Built to provide a beautiful, accessible platform for managing school operations, helping headmasters and teachers streamline their workflows.",
+      impact: "Simplifies administrative tasks and improves communication between staff, students, and employees.",
+      link: "https://campus.sevalla.app/",
+      accentColor: "from-violet-500/40 to-cyan-600/40",
+    },
   ];
 
   let mobileProjects: MobileProject[] = [
-    { 
+    {
       src: aklee,
-      name: 'Aklee', 
-      tagline: 'AI-Powered Nutrition Scanner',
-      purpose: 'Built to help users scan nutritional information of food items quickly using AI-powered image recognition and generate nutriscores.',
-      impact: 'Helped health-conscious users make informed dietary choices by providing instant access to nutritional data while shopping.',
+      name: "Aklee",
+      tagline: "AI-Powered Nutrition Scanner",
+      purpose: "Built to help users scan nutritional information of food items quickly using AI-powered image recognition and generate nutriscores.",
+      impact: "Helped health-conscious users make informed dietary choices by providing instant access to nutritional data while shopping.",
+      accentColor: "from-green-500/30 to-lime-600/30",
     },
-    { 
+    {
       src: tilawah_mobile,
-      name: 'Tilawah', 
-      tagline: 'Quran & Prayer Companion',
-      purpose: 'Developed to offer a seamless mobile experience for Quran recitation and prayer times, making spiritual practice convenient anywhere.',
-      impact: 'Enabled users to maintain their religious routines on the go, fostering a deeper connection with their faith through mobile accessibility.',
-    }
+      name: "Tilawah",
+      tagline: "Quran & Prayer Companion",
+      purpose: "Developed to offer a seamless mobile experience for Quran recitation and prayer times, making spiritual practice convenient anywhere.",
+      impact: "Enabled users to maintain their religious routines on the go, fostering a deeper connection with their faith through mobile accessibility.",
+      accentColor: "from-orange-500/30 to-yellow-600/30",
+    },
   ];
 
   let selectedProject = 0;
   let selectedMobileProject = 0;
+
+  // Crossfade image on selection change
+  function selectProject(i: number) {
+    if (i === selectedProject) return;
+    gsap.to(".hero-img", { opacity: 0, scale: 1.02, duration: 0.3, ease: "power2.in", onComplete: () => {
+      selectedProject = i;
+      gsap.fromTo(".hero-img", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" });
+    }});
+    gsap.to(".hero-info", { y: 10, opacity: 0, duration: 0.25, ease: "power2.in", onComplete: () => {
+      gsap.to(".hero-info", { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" });
+    }});
+  }
+
+  function selectMobileProject(i: number) {
+    if (i === selectedMobileProject) return;
+    selectedMobileProject = i;
+  }
+
+  onMount(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    setTimeout(() => {
+      // Section header
+      gsap.from(".works-header > *", {
+        scrollTrigger: { trigger: "#works", start: "top 80%", once: true },
+        y: 30, opacity: 0, duration: 0.9, stagger: 0.15, ease: "power2.out"
+      });
+
+      // Hero card
+      gsap.from(".hero-card", {
+        scrollTrigger: { trigger: ".hero-card", start: "top 80%", once: true },
+        y: 60, opacity: 0, duration: 1.1, ease: "power3.out"
+      });
+
+      // Thumbnail strip
+      gsap.from(".thumb-wrapper", {
+        scrollTrigger: { trigger: ".thumb-strip", start: "top 85%", once: true },
+        y: 30, opacity: 0, duration: 0.6, stagger: 0.08, ease: "back.out(1.5)"
+      });
+
+      // Mobile section
+      gsap.from(".mobile-card-wrapper", {
+        scrollTrigger: { trigger: ".mobile-section", start: "top 85%", once: true },
+        y: 50, opacity: 0, duration: 0.9, stagger: 0.2, ease: "power3.out"
+      });
+
+      ScrollTrigger.refresh();
+    }, 100);
+  });
 </script>
 
-<section class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="works">
-  <div class="absolute inset-0 bg-gradient-to-b from-black via-purple-900/20 to-slate-900"></div>
-  
+<section
+  id="works"
+  class="relative py-24 px-4 sm:px-6 lg:px-12 overflow-hidden bg-black"
+>
+  <!-- Ambient background blobs -->
+  <div class="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-blue-700/15 blur-[140px] pointer-events-none"></div>
+
   <div class="max-w-7xl mx-auto relative z-10">
-    <!-- Header -->
-    <div class="text-center mb-16">
-      <h2 class="text-5xl sm:text-6xl font-bold text-white mb-4">
-        Projects That Matter
-      </h2>
-      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-        Every project tells a story of solving real problems for real people
-      </p>
+
+    <!-- ═══ HEADER ═══ -->
+    <div class="works-header text-center mb-16">
+      <p class="text-xs uppercase tracking-[0.4em] text-white/40 font-semibold mb-4">Selected Work</p>
+      <h2 class="text-5xl sm:text-6xl font-bold text-white mb-4 tracking-tight">Projects That Matter</h2>
+      <p class="text-lg text-white/50 max-w-xl mx-auto font-light">Every project tells a story of solving real problems for real people.</p>
     </div>
 
-    <!-- Main Project Display -->
-    <div class="grid lg:grid-cols-2 gap-8 mb-12 items-start">
-      <!-- Image Side -->
-      <div class="relative group h-[300px] sm:h-[400px] lg:h-[500px]">
-        <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl h-full">
-          <img 
-            src={projects[selectedProject].src} 
-            alt={projects[selectedProject].name} 
-            class="w-full h-full object-cover"
-          />
-        </div>
+    <!-- ═══ HERO SPOTLIGHT CARD ═══ -->
+    <div class="hero-card relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl mb-6"
+         style="min-height: 560px;">
+      <!-- Full-bleed background image -->
+      <img
+        src={projects[selectedProject].src}
+        alt={projects[selectedProject].name}
+        class="hero-img absolute inset-0 w-full h-full object-cover"
+      />
+
+      <!-- Gradient overlays -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-transparent"></div>
+
+      <!-- Accent color glow at top -->
+      <div class="absolute inset-0 bg-gradient-to-br {projects[selectedProject].accentColor} mix-blend-soft-light"></div>
+
+      <!-- Index counter -->
+      <div class="absolute top-6 right-8 text-white/20 font-bold text-7xl select-none leading-none">
+        {String(selectedProject + 1).padStart(2, '0')}
       </div>
 
-      <!-- Content Side -->
-      <div class="flex flex-col justify-start space-y-6 min-h-[400px] lg:h-[500px]">
-        <div>
-          <h3 class="text-4xl font-bold text-white mb-2">
-            {projects[selectedProject].name}
-          </h3>
-          <p class="text-purple-300 text-lg font-medium">
-            {projects[selectedProject].tagline}
-          </p>
-        </div>
+      <!-- Floating glass info panel -->
+      <div class="hero-info absolute bottom-0 left-0 right-0 p-8 md:p-12">
+        <!-- Label -->
+        <p class="text-xs uppercase tracking-[0.4em] text-white/50 font-semibold mb-3">
+          Web Application
+        </p>
 
-        <div class="space-y-4 flex-1">
-          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-            <h4 class="text-purple-400 font-semibold mb-2 flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-              </svg>
-              The Purpose
-            </h4>
-            <p class="text-gray-300 leading-relaxed">
-              {projects[selectedProject].purpose}
-            </p>
+        <!-- Title + Tagline -->
+        <h3 class="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
+          {projects[selectedProject].name}
+        </h3>
+        <p class="text-white/60 text-base md:text-lg mb-6 max-w-xl font-light">
+          {projects[selectedProject].tagline}
+        </p>
+
+        <!-- Info pills row -->
+        <div class="flex flex-wrap gap-3 mb-8">
+          <div class="liquid-glass-strong rounded-2xl px-5 py-3 border border-white/10 max-w-sm">
+            <p class="text-white/40 text-xs uppercase tracking-wider font-semibold mb-1">Purpose</p>
+            <p class="text-white/80 text-sm leading-relaxed">{projects[selectedProject].purpose}</p>
           </div>
-
-          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-            <h4 class="text-pink-400 font-semibold mb-2 flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-              The Impact
-            </h4>
-            <p class="text-gray-300 leading-relaxed">
-              {projects[selectedProject].impact}
-            </p>
+          <div class="liquid-glass-strong rounded-2xl px-5 py-3 border border-white/10 max-w-sm">
+            <p class="text-white/40 text-xs uppercase tracking-wider font-semibold mb-1">Impact</p>
+            <p class="text-white/80 text-sm leading-relaxed">{projects[selectedProject].impact}</p>
           </div>
         </div>
 
+        <!-- CTA button -->
         {#if projects[selectedProject].link}
-          <a 
-            href={projects[selectedProject].link} 
+          <a
+            href={projects[selectedProject].link}
             target="_blank"
-            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 z-20"
+            rel="noopener"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full liquid-glass-strong border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-all duration-300 group"
           >
-            <span>Explore Project</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-            </svg>
+            Explore Project
+            <ArrowUpRight class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         {/if}
       </div>
     </div>
 
-    <!-- Project Grid Navigation -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <!-- ═══ THUMBNAIL STRIP ═══ -->
+    <div class="thumb-strip flex gap-4 overflow-x-auto pb-2 mb-24 scrollbar-hide">
       {#each projects as project, i}
-        <button
-          on:click={() => selectedProject = i}
-          class="group relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105"
-          class:ring-4={i === selectedProject}
-          class:ring-purple-500={i === selectedProject}
-          class:opacity-50={i !== selectedProject}
-        >
-          <img 
-            src={project.src} 
-            alt={project.name} 
-            class="w-full h-32 object-cover"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-4">
-            <div class="text-left">
-              <h5 class="text-white font-bold text-sm">{project.name}</h5>
-              <p class="text-gray-300 text-xs mt-1 line-clamp-1">{project.tagline}</p>
+        <div class="thumb-wrapper flex-shrink-0">
+          <button
+            on:click={() => selectProject(i)}
+            class={`thumb-btn relative w-48 h-28 rounded-2xl overflow-hidden border transition-all duration-500 group ${
+              i === selectedProject
+                ? 'border-white opacity-100'
+                : 'border-white/10 opacity-40 hover:opacity-70'
+            }`}
+          >
+            <img src={project.src} alt={project.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-3">
+              <span class="text-white text-xs font-semibold tracking-wide">{project.name}</span>
             </div>
-          </div>
-          {#if i === selectedProject}
-            <div class="absolute top-2 right-2 w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
-          {/if}
-        </button>
+            <!-- Active indicator line -->
+            {#if i === selectedProject}
+              <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-white"></div>
+            {/if}
+          </button>
+        </div>
       {/each}
     </div>
 
-    <!-- Divider -->
-    <div class="my-20 flex items-center">
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
-      <div class="px-6">
-        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-        </svg>
-      </div>
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+    <!-- ═══ DIVIDER ═══ -->
+    <div class="flex items-center gap-6 mb-20">
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      <p class="text-white/20 text-xs uppercase tracking-[0.4em] font-semibold whitespace-nowrap">Mobile Applications</p>
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
     </div>
 
-    <!-- Mobile Apps Header -->
-    <div class="text-center mb-16">
-      <h2 class="text-5xl sm:text-6xl font-bold text-white mb-4">
-        Mobile Applications
-      </h2>
-      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-        Building experiences that fit in your pocket
-      </p>
-    </div>
-
-    <!-- Main Mobile App Display -->
-    <div class="grid lg:grid-cols-2 gap-8 mb-12 items-start">
-      <!-- Image Side -->
-      <div class="relative group h-[400px] sm:h-[500px] lg:h-[600px]">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl h-full flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900">
-          <img 
-            src={mobileProjects[selectedMobileProject].src} 
-            alt={mobileProjects[selectedMobileProject].name} 
-            class="max-h-full max-w-full object-contain p-4"
-          />
-        </div>
+    <!-- ═══ MOBILE APPS ═══ -->
+    <div class="mobile-section">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight">In Your Pocket</h2>
+        <p class="text-white/50 text-lg font-light">Building experiences that go wherever you go.</p>
       </div>
 
-      <!-- Content Side -->
-      <div class="flex flex-col justify-start space-y-6 min-h-[400px] lg:h-[500px]">
-        <div>
-          <h3 class="text-4xl font-bold text-white mb-2">
-            {mobileProjects[selectedMobileProject].name}
-          </h3>
-          <p class="text-cyan-300 text-lg font-medium">
-            {mobileProjects[selectedMobileProject].tagline}
-          </p>
-        </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {#each mobileProjects as app, i}
+          <div class="mobile-card-wrapper">
+            <div
+              class="mobile-card group relative rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer transition-all duration-500 hover:border-white/25 hover:shadow-2xl"
+              style="min-height: 480px;"
+            >
+              <!-- Image fills the card -->
+              <img
+                src={app.src}
+                alt={app.name}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
 
-        <div class="space-y-4 flex-1">
-          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-            <h4 class="text-blue-400 font-semibold mb-2 flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-              </svg>
-              The Purpose
-            </h4>
-            <p class="text-gray-300 leading-relaxed">
-              {mobileProjects[selectedMobileProject].purpose}
-            </p>
-          </div>
+              <!-- Gradient overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-br {app.accentColor} mix-blend-soft-light opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-            <h4 class="text-cyan-400 font-semibold mb-2 flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-              The Impact
-            </h4>
-            <p class="text-gray-300 leading-relaxed">
-              {mobileProjects[selectedMobileProject].impact}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+              <!-- Index -->
+              <div class="absolute top-5 right-6 text-white/15 font-bold text-6xl select-none leading-none">
+                {String(i + 1).padStart(2, '0')}
+              </div>
 
-    <!-- Mobile Apps Grid Navigation -->
-    <div class="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
-      {#each mobileProjects as mobileApp, i}
-        <button
-          on:click={() => selectedMobileProject = i}
-          class="group relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105"
-          class:ring-4={i === selectedMobileProject}
-          class:ring-blue-500={i === selectedMobileProject}
-          class:opacity-50={i !== selectedMobileProject}
-        >
-          <div class="w-full h-32 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
-            <img 
-              src={mobileApp.src} 
-              alt={mobileApp.name} 
-              class="max-h-full max-w-full object-contain p-4"
-            />
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-4">
-            <div class="text-left">
-              <h5 class="text-white font-bold text-sm">{mobileApp.name}</h5>
-              <p class="text-gray-300 text-xs mt-1 line-clamp-1">{mobileApp.tagline}</p>
+              <!-- Info at bottom -->
+              <div class="absolute bottom-0 left-0 right-0 p-7">
+                <p class="text-xs uppercase tracking-[0.35em] text-white/40 font-semibold mb-2">Mobile</p>
+                <h3 class="text-3xl font-bold text-white mb-1 tracking-tight">{app.name}</h3>
+                <p class="text-white/60 text-sm mb-5 font-light">{app.tagline}</p>
+
+                <!-- Expanding info on hover -->
+                <div class="overflow-hidden max-h-0 group-hover:max-h-48 transition-all duration-500 ease-in-out">
+                  <div class="liquid-glass-strong rounded-xl p-4 border border-white/10 mb-4">
+                    <p class="text-white/40 text-xs uppercase tracking-wider font-semibold mb-1">Impact</p>
+                    <p class="text-white/80 text-sm leading-relaxed">{app.impact}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          {#if i === selectedMobileProject}
-            <div class="absolute top-2 right-2 w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-          {/if}
-        </button>
-      {/each}
+        {/each}
+      </div>
     </div>
+
   </div>
 </section>
 
 <style>
-  section {
-    background: url('../img/bg.jpg') center/cover no-repeat;
-    position: relative;
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
-  }
-
-  .animate-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .line-clamp-1 {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 </style>

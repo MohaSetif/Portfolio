@@ -3,85 +3,92 @@ import { onMount } from "svelte";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import my_pic from "../img/profile_pic.png";
-import "../css/about.css";
 
 onMount(() => {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Initial states
-  gsap.set(".bio-img", { x: "-100%", opacity: 0, scale: 0.8, rotationY: -10 });
-  gsap.set(".bio-text", { x: "100%", opacity: 0, y: 20 });
-  gsap.set(".bio-title", { y: 60, opacity: 0, scale: 0.95 });
-
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".about",
-      start: "top 70%",
-      end: "top 30%",
+      trigger: "#about-section",
+      start: "top 75%",
       once: true,
     }
   });
 
-  // Title fades in
-  tl.to(".bio-title", { y: 0, opacity: 1, scale: 1, duration: 1.0, ease: "power2.out" });
+  // Background blobs fade in
+  tl.fromTo(".bg-blob", { opacity: 0, scale: 0.5 }, { opacity: 0.6, scale: 1, duration: 2, ease: "power3.out", stagger: 0.3 });
 
-  // Image slides & pops
-  tl.to(".bio-img", {
-    x: "0%",
-    opacity: 1,
-    scale: 1,
-    rotationY: 0,
-    duration: 1.2,
-    ease: "power2.out",
-    force3D: true
-  }, "-=0.6");
+  // Glass card slide up
+  tl.fromTo(".about-card", { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, "-=1.5");
 
-  // Glow fades in
-  tl.from(".img-glow", { opacity: 0, scale: 0.5, duration: 1.0, ease: "power2.out" }, "-=0.8");
+  // Image float and fade
+  tl.fromTo(".bio-pic", { x: 50, opacity: 0, rotationY: 15 }, { x: 0, opacity: 1, rotationY: 0, duration: 1.5, ease: "power2.out" }, "-=0.8");
 
-  // Text slides in
-  tl.to(".bio-text", { x: "0%", opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, "-=1.0");
+  // Text stagger
+  tl.fromTo(".stagger-text", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power2.out" }, "-=1.2");
 
-  // Animate special spans
-  gsap.from(".bio-text .dev, .bio-text .design, .bio-text .sparkle", {
-    opacity: 0,
-    y: 15,
-    duration: 0.6,
-    ease: "power2.out",
-    stagger: 0.1,
-    scrollTrigger: { trigger: ".bio-text", start: "top 80%", once: true }
+  // Continuous floating for the image container
+  gsap.to(".bio-pic-wrapper", {
+    y: -15,
+    rotationX: 2,
+    rotationY: -2,
+    duration: 4,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
   });
-
-  // Gentle floating effect
-  gsap.to(".bio-img", { y: -8, duration: 3.5, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 2.0 });
-
-  // Smooth parallax
-  gsap.to(".bio-img-wrapper", {
-    y: -40,
+  
+  // Parallax on blobs
+  gsap.to(".bg-blob-1", {
+    y: 100,
     ease: "none",
-    scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: 0.9 }
+    scrollTrigger: { trigger: "#about-section", start: "top bottom", end: "bottom top", scrub: true }
   });
-  gsap.to(".bio-text", {
-    y: -20,
+  gsap.to(".bg-blob-2", {
+    y: -100,
     ease: "none",
-    scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: 0.9 }
+    scrollTrigger: { trigger: "#about-section", start: "top bottom", end: "bottom top", scrub: true }
   });
 });
 </script>
 
+<section id="about-section" class="relative min-h-screen w-full flex items-center justify-center overflow-hidden py-24 bg-black">
+  <!-- Decorative background blur blobs -->
+  <div class="bg-blob bg-blob-1 absolute top-0 left-[-10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-blue-600/20 blur-[120px] pointer-events-none"></div>
+  <div class="bg-blob bg-blob-2 absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-purple-600/20 blur-[120px] pointer-events-none"></div>
 
-<section class="about min-h-screen w-full" id="about">
-  <h1 class="title bio-title text-center">Who am I?</h1>
-  <div class="bio-container flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 mt-10 px-5 md:px-20">
-    <div class="bio-img-wrapper">
-      <img src={my_pic} alt="Bourouba Mohamed Khalil" class="bio-img" />
-      <div class="img-glow"></div>
+  <!-- Main Content Card -->
+  <div class="about-card liquid-glass-strong relative z-10 w-[90%] max-w-7xl rounded-[2.5rem] p-8 md:p-16 lg:p-20 flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24">
+    
+    <!-- Text Content -->
+    <div class="flex-1 text-center lg:text-left z-10">
+      <h2 class="stagger-text text-xs md:text-sm uppercase tracking-[0.4em] text-white/50 mb-6 font-semibold">
+        Who am I?
+      </h2>
+      <h1 class="stagger-text text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-[1.1] tracking-tight">
+        Crafting <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">digital experiences</span> that inspire.
+      </h1>
+      
+      <p class="stagger-text text-base md:text-lg lg:text-xl text-white/70 leading-relaxed mb-6 font-light max-w-2xl mx-auto lg:mx-0">
+        I'm <span class="text-white font-medium">Bourouba Mohamed El Khalil</span>, a cybersecurity graduate turned full-stack developer with a deep passion for <span class="text-white font-medium">UI/UX design</span>. 
+      </p>
+      
+      <p class="stagger-text text-base md:text-lg lg:text-xl text-white/70 leading-relaxed font-light max-w-2xl mx-auto lg:mx-0">
+        I explore the intersection of conceptual design and cutting-edge technology, constantly navigating the ever-changing landscape of Computer Science. Let's create something <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">truly amazing</span> together.
+      </p>
     </div>
-    <p class="bio bio-text mx-4 md:ml-12">
-      I'm <span class="bold">Bourouba Mohamed El Khalil</span>, a <span class="bold">cybersecurity</span> graduate and a
-      <span class="bold">full-stack</span> developer,
-      with a passion for <span class="bold">UI/UX design</span>. I explore conceptual design and innovation while navigating the ever-changing landscape of Computer Science.
-      Let's create <span class="bold">awesome</span> and <span class="bold">amazing</span> experiences together!
-    </p>
+
+    <!-- Image Content -->
+    <div class="flex-1 relative w-full max-w-sm lg:max-w-md mx-auto perspective-[1000px]">
+      <div class="bio-pic-wrapper relative">
+        <!-- Inner glow for the image container -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/40 to-purple-500/40 rounded-3xl blur-2xl transform scale-[0.85] -z-10"></div>
+        
+        <!-- The image -->
+        <div class="bio-pic relative z-10 rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-black/50 aspect-[4/5]">
+          <img src={my_pic} alt="Bourouba Mohamed Khalil" class="w-full h-full object-cover opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-700 ease-out" />
+        </div>
+      </div>
+    </div>
   </div>
 </section>

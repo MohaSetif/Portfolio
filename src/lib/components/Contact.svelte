@@ -2,6 +2,8 @@
   import emailjs from "emailjs-com";
   import White_logo from "../img/khalil logo white (2).png";
   import { onMount } from "svelte";
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   let sendername = "";
   let subject = "";
@@ -28,6 +30,20 @@
   };
 
   onMount(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from("#contact-container", {
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top 50%",
+        once: true
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+
     const subtitle = document.querySelector(".card-subtitle") as HTMLElement;
     const text = "to build your next project!";
 
@@ -46,6 +62,7 @@
     <h1 class="title text-center m-16">Let's Get in Touch</h1>
 
     <div
+      id="contact-container"
       class="max-w-6xl mt-10 mx-auto bg-gray-900 rounded-lg shadow-xl overflow-hidden"
     >
       <div class="md:flex">

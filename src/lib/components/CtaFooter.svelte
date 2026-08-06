@@ -2,10 +2,27 @@
   import { onMount } from "svelte";
   import { ArrowUpRight } from "lucide-svelte";
   import Hls from "hls.js";
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   let videoElement: HTMLVideoElement;
 
   onMount(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    gsap.from(".cta-content > *", {
+      scrollTrigger: {
+        trigger: "#cta-footer",
+        start: "top 50%",
+        once: true
+      },
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power2.out"
+    });
+
     if (!videoElement) return;
 
     const src = "https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8";
@@ -22,7 +39,7 @@
   });
 </script>
 
-<section class="relative py-32 px-6 md:px-16 lg:px-24 text-center overflow-hidden">
+<section id="cta-footer" class="relative py-32 px-6 md:px-16 lg:px-24 text-center overflow-hidden">
   <!-- Background HLS Video -->
   <video
     bind:this={videoElement}
@@ -45,7 +62,7 @@
   ></div>
 
   <!-- Content -->
-  <div class="relative z-10">
+  <div class="cta-content relative z-10">
     <h2 class="text-5xl md:text-6xl lg:text-7xl font-heading italic text-white tracking-tight leading-[0.85] max-w-3xl mx-auto mb-4">
       Your next website starts here.
     </h2>
