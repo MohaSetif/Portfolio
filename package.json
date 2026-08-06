@@ -40,6 +40,8 @@
     "ogl": "^1.0.11",
     "svelte-fa": "^3.0.4",
     "ts-node": "^10.9.2",
-    "wtc-gl": "1.2.0-beta.1"
+    "wtc-gl": "1.2.0-beta.1",
+    "hls.js": "^1.5.0",
+    "lucide-svelte": "^0.428.0"
   }
 }

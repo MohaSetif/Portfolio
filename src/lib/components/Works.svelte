@@ -6,6 +6,7 @@
 
   import tilawah_mobile from "../img/tilawah_mobile.jpg";
   import aklee from "../img/aklee.jpg";
+  import campus from "../img/campus.png"
 
   interface Project {
     src: string;
@@ -57,6 +58,14 @@
       purpose: 'Built to provide a beautiful, accessible platform for Quran recitation and prayer times, helping Muslims maintain their daily spiritual routines.',
       impact: 'Serves as a daily companion for users seeking to strengthen their connection with the Quran and stay consistent with prayer schedules.',
       link: 'https://tilawah-kappa.vercel.app/'
+    },
+    { 
+      src: campus, 
+      name: 'CampusMS', 
+      tagline: 'A School Management System for Headmasters and Teachers',
+      purpose: 'Built to provide a beautiful, accessible platform for managing school operations, helping headmasters and teachers streamline their workflows.',
+      impact: 'Simplifies administrative tasks and improves communication between staff, students, and employees.',
+      link: 'https://campus.sevalla.app/'
     }
   ];
 
@@ -82,7 +91,7 @@
 </script>
 
 <section class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="works">
-  <div class="absolute inset-0 bg-gradient-to-b from-neutral-950 via-purple-900/20 to-slate-900"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black via-purple-900/20 to-slate-900"></div>
   
   <div class="max-w-7xl mx-auto relative z-10">
     <!-- Header -->

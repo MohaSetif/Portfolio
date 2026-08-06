@@ -11,7 +11,7 @@
   });
 </script>
 
-<div class="nav">
+<div class="nav liquid-glass-strong">
   <input type="checkbox" id="nav-check" />
 
   <div class="nav-header">

@@ -107,7 +107,7 @@
   ];
 </script>
 
-<section class="skills" id="skills">
+<section class="skills bg-black" id="skills">
   <div class="lang_logos">
     <h1 class="title text-center">My skills</h1>
     <div

@@ -23,7 +23,7 @@ onMount(() => {
   });
 
   // Title fades in
-  tl.to(".bio-title", { y: 0, opacity: 1, scale: 1, duration: 1.5, ease: "power3.out" });
+  tl.to(".bio-title", { y: 0, opacity: 1, scale: 1, duration: 1.0, ease: "power2.out" });
 
   // Image slides & pops
   tl.to(".bio-img", {
@@ -31,24 +31,24 @@ onMount(() => {
     opacity: 1,
     scale: 1,
     rotationY: 0,
-    duration: 2.0,
-    ease: "back.out(1.3)",
+    duration: 1.2,
+    ease: "power2.out",
     force3D: true
-  }, "-=1.0");
+  }, "-=0.6");
 
   // Glow fades in
-  tl.from(".img-glow", { opacity: 0, scale: 0.5, duration: 1.5, ease: "power2.out" }, "-=1.5");
+  tl.from(".img-glow", { opacity: 0, scale: 0.5, duration: 1.0, ease: "power2.out" }, "-=0.8");
 
   // Text slides in
-  tl.to(".bio-text", { x: "0%", opacity: 1, y: 0, duration: 2.0, ease: "power3.out" }, "-=1.8");
+  tl.to(".bio-text", { x: "0%", opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, "-=1.0");
 
   // Animate special spans
   gsap.from(".bio-text .dev, .bio-text .design, .bio-text .sparkle", {
     opacity: 0,
     y: 15,
-    duration: 0.8,
-    ease: "back.out(2)",
-    stagger: 0.12,
+    duration: 0.6,
+    ease: "power2.out",
+    stagger: 0.1,
     scrollTrigger: { trigger: ".bio-text", start: "top 80%", once: true }
   });
 
