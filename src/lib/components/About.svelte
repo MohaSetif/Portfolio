@@ -52,7 +52,7 @@ onMount(() => {
 });
 </script>
 
-<section id="about-section" class="relative min-h-screen w-full flex items-center justify-center overflow-hidden py-24 bg-black">
+<section id="about" class="relative min-h-screen w-full flex items-center justify-center overflow-hidden py-24 bg-black">
   <!-- Decorative background blur blobs -->
   <div class="bg-blob bg-blob-1 absolute top-0 left-[-10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-blue-600/20 blur-[120px] pointer-events-none"></div>
   <div class="bg-blob bg-blob-2 absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-purple-600/20 blur-[120px] pointer-events-none"></div>

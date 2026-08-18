@@ -10,6 +10,7 @@
   import tilawah_mobile from "../img/tilawah_mobile.jpg";
   import aklee from "../img/aklee.jpg";
   import campus from "../img/campus.png";
+  import DMC from "../img/DMC.png";
 
   interface Project {
     src: string;
@@ -38,8 +39,17 @@
       tagline: "Empowering Youth Through Digital Presence",
       purpose: "Built to give the Chababouna association a modern digital platform to showcase their mission, activities, and connect with the community they serve.",
       impact: "Enabled the organization to reach more youth, streamline event registrations, and establish credibility through professional online presence.",
-      link: "https://chababouna.dz",
+      link: "",
       accentColor: "from-emerald-500/40 to-teal-600/40",
+    },
+    {
+      src: DMC,
+      name: "Digital Med Care",
+      tagline: "Revolutionizing Healthcare Access",
+      purpose: "Developed to provide patients with a seamless digital experience for booking appointments, accessing medical records, and communicating with healthcare providers. Also, having the ability to look for rare medications and order them online.",
+      impact: "Improved patient engagement and satisfaction by reducing wait times and enhancing the accessibility of healthcare services.",
+      link: "",
+      accentColor: "from-cyan-500/40 to-blue-600/40",
     },
     {
       src: spiral,
